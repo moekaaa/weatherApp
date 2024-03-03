@@ -47,10 +47,6 @@ async function fetchWeather() {
   document.querySelector(".temp_min").innerHTML = Math.round(data.main.temp_min) + "°C";
   document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
   document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-
-  
-
-  
 }
 const city = ref("")
 </script>
@@ -81,7 +77,7 @@ const city = ref("")
 *{
     margin: 0;
     padding: 0;
-    font-family: Comic Sans MS;
+    font-family: ComicSansMS;
     box-sizing: border-box;
 }
 body{
