@@ -1,0 +1,19 @@
+・Tech stack
+Vue.js
+TypeScript
+Map libraries(leaflet or openlayers)
+UI libraries(for design)
+Open Weather API(weather info)
+Github/Git(source code management)
+Vercel(deployment)
+
+・周辺知識
+Promise(async/await)
+Responsive design
+Localstorage
+
+・機能
+マップ表示
+特定地点のクリックで天気情報を取得
+お気に入りに場所を登録
+レスポンシブデザイン
