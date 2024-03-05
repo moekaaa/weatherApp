@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import { ref } from 'vue'
 
 const apiKey = "37639b3722b929b763122aeed5ee06eb";
