@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import {getTodayDate} from "../modules"
+import {WEATHER} from "../consts"
 
 // TODO: APIキーを.envファイルに移動
 const apiKey = "37639b3722b929b763122aeed5ee06eb";
@@ -26,7 +27,7 @@ async function fetchWeather() {
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
   const data = await response.json()
 
-  weatherDetail.value.weather = data.weather[0].main;
+  weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main];
   weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
   weatherDetail.value.temp_min = Math.round(data.main.temp_min) + "°C";
   weatherDetail.value.wind = data.wind.speed + "km/h";
@@ -49,8 +50,11 @@ async function fetchWeather() {
       <div v-if="isDataFetched" class="weatherDetail">
         <p class="today">今日の日付: {{ today }}</p>
         <p class="weather">{{ weatherDetail.weather }}</p>
-        <p class="temp_max">{{ weatherDetail.temp_max }}</p>
-        <p class="temp_min">{{ weatherDetail.temp_min }}</p>
+        <div class="temp">
+            <p class="temp_min">{{ weatherDetail.temp_min }}</p>
+            <div class="temp_border"></div>
+            <p class="temp_max">{{ weatherDetail.temp_max }}</p>
+        </div>
         <p class="wind">{{ weatherDetail.wind }}</p>
         <p class="humidity">{{ weatherDetail.humidity }}</p>
       </div>
@@ -87,5 +91,20 @@ body{
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+}
+.temp {
+    display: flex;
+}
+.temp_min {
+    color: blue;
+}
+.temp_border {
+    width: 1px;
+    height: 28px;
+    background-color: white;
+    margin: 0 10px;
+}
+.temp_max {
+    color: red;
 }
 </style>
