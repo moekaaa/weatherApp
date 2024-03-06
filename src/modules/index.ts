@@ -1,6 +1,7 @@
 import {WEEK_DAY} from "../consts"
 
 export const getTodayDate = () => {
+    // TODO: Tempoという日付管理ライブラリが便利そう、、
     const date = new Date();
     const month = (date.getMonth() + 1);
     const day = date.getDate();
