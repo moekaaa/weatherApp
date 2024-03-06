@@ -11,8 +11,8 @@ export const WEEK_DAY: Record<number, WEEK_DAY_TYPE> = {
 };
 
 export const WEATHER: WEATHER_TYPE = {
-    sunny: '晴れ',
+    Sunny: '晴れ',
     Clouds: '曇り',
-    rain: '雨',
-    snowy: '雪',
+    Rain: '雨',
+    Snowy: '雪',
 }
