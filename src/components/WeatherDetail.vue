@@ -30,8 +30,8 @@ async function fetchWeather() {
   weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main];
   weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
   weatherDetail.value.temp_min = Math.round(data.main.temp_min) + "°C";
-  weatherDetail.value.wind = data.wind.speed + "km/h";
-  weatherDetail.value.humidity = data.main.humidity + "%";
+  weatherDetail.value.wind = "風速: " + data.wind.speed + "km/h";
+  weatherDetail.value.humidity = "湿度: " + data.main.humidity + "%";
 
   isDataFetched.value = true
 }
