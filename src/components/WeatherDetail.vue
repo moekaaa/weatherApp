@@ -24,7 +24,13 @@ const today = ref(getTodayDate())
 
 async function fetchWeather() {
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
+
+  // TODO: 天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
+  // try catch文を使用する
+
   const data = await response.json()
+
+  console.log(data)
 
   weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main];
   weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
