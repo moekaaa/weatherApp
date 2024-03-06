@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {WEEK_DAY} from "../consts"
+import {getTodayDate} from "../modules"
 
+// TODO: APIキーを.envファイルに移動
 const apiKey = "37639b3722b929b763122aeed5ee06eb";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+
+const city = ref("")
 
 const weatherDetail = ref({
   weather: '',
@@ -13,13 +16,10 @@ const weatherDetail = ref({
   humidity: '',
 })
 
-const getDate = () => {
-    const date = new Date();
-    const month = (date.getMonth() + 1);
-    const day = date.getDate();
-    const weekDayNum = date.getDay(); // 曜日を数値で取得する
-    const weekDayName = (WEEK_DAY[weekDayNum]); // 曜日を文字列に変換
-}
+const isDataFetched = ref(false)
+
+const today = ref(getTodayDate())
+
 
 async function fetchWeather() {
   let inputDataCityName = ref(city.value)
@@ -31,8 +31,9 @@ async function fetchWeather() {
   weatherDetail.value.temp_min = Math.round(data.main.temp_min) + "°C";
   weatherDetail.value.wind = data.wind.speed + "km/h";
   weatherDetail.value.humidity = data.main.humidity + "%";
+
+  isDataFetched.value = true
 }
-const city = ref("")
 </script>
 
 <template>
@@ -45,7 +46,8 @@ const city = ref("")
       <p class="today"></p>
       <p id="weekDayName"></p>
 
-      <div class="weatherDetail">
+      <div v-if="isDataFetched" class="weatherDetail">
+        <p class="today">今日の日付: {{ today }}</p>
         <p class="weather">{{ weatherDetail.weather }}</p>
         <p class="temp_max">{{ weatherDetail.temp_max }}</p>
         <p class="temp_min">{{ weatherDetail.temp_min }}</p>
@@ -67,7 +69,23 @@ body{
   color: white;
 }
 .showWeather{
-  width: 90%;
-
+    height: 300px;
+    width: 100%;
+    background-color: gray;
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.weatherDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 </style>
