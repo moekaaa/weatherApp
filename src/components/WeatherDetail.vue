@@ -23,7 +23,6 @@ const today = ref(getTodayDate())
 
 
 async function fetchWeather() {
-  let inputDataCityName = ref(city.value)
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
   const data = await response.json()
 
