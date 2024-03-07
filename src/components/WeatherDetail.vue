@@ -22,7 +22,8 @@ const isDataFetched = ref(false)
 const today = ref(getTodayDate())
 
 
-async function fetchWeather() {
+// TODO_Moeka: この関数もmodules/に移動
+async function fetchWeather(): void {
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
 
   // TODO_Moeka: 天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
