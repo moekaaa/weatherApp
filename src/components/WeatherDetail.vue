@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import {getTodayDate} from "../modules"
 import {WEATHER} from "../consts"
 
-// TODO: APIキーを.envファイルに移動
+// TODO_Moeka: APIキーを.envファイルに移動
 const apiKey = "37639b3722b929b763122aeed5ee06eb";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
 
@@ -24,6 +24,7 @@ const today = ref(getTodayDate())
 
 // TODO_Moeka: この関数もmodules/に移動
 async function fetchWeather(): void {
+    // TODO_Moeka: urlとapiKeyを.envファイルからロード(dotenvライブラリ)
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
 
   // TODO_Moeka: 天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
