@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import {getTodayDate} from "../modules"
 import {WEATHER} from "../consts"
+import { WEATHER_EN } from '../types';
 
 // TODO_Moeka: APIキーを.envファイルに移動
 const apiKey = "37639b3722b929b763122aeed5ee06eb";
@@ -23,7 +24,7 @@ const today = ref(getTodayDate())
 
 
 // TODO_Moeka: この関数もmodules/に移動
-async function fetchWeather(): void {
+async function fetchWeather(): Promise<void> {
     // TODO_Moeka: urlとapiKeyを.envファイルからロード(dotenvライブラリ)
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
 
@@ -32,15 +33,15 @@ async function fetchWeather(): void {
 
   const data = await response.json()
 
-  console.log(data)
+  if (!data) return
 
-  weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main];
+  weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main as WEATHER_EN];
   weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
   weatherDetail.value.temp_min = Math.round(data.main.temp_min) + "°C";
   weatherDetail.value.wind = "風速: " + data.wind.speed + "km/h";
   weatherDetail.value.humidity = "湿度: " + data.main.humidity + "%";
 
-  isDataFetched.value = true
+  isDataFetched.value = true 
 }
 </script>
 

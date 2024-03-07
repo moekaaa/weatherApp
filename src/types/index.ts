@@ -2,7 +2,7 @@
 export type WEEK_DAY_TYPE = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 
 // TODO_Moeka: 値がundefinedの場合の値を追加する
-type WEATHER_EN = "Sunny" | "Clouds" | "Rain" | "Snowy";
+export type WEATHER_EN = "Sunny" | "Clouds" | "Rain" | "Snowy";
 
 type WEATHER_JP = "晴れ" | "曇り" | "雨" | "雪";
 
