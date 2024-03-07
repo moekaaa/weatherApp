@@ -6,11 +6,16 @@ UI libraries(for design)
 Open Weather API(weather info)
 Github/Git(source code management)
 Vercel(deployment)
+# 追加
+Postgres
+Pinia
 
 ・周辺知識
 Promise(async/await)
 Responsive design
 Localstorage
+# 追加
+エラーハンドリング
 
 ・機能
 マップ表示
