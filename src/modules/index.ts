@@ -1,6 +1,6 @@
 import {WEEK_DAY} from "../consts"
 
-export const getTodayDate = () => {
+export function getTodayDate (): string {
     // TODO_Moeka: Tempoという日付管理ライブラリが便利そう、、
     const date = new Date();
     const month = (date.getMonth() + 1);
