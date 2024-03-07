@@ -25,7 +25,7 @@ const today = ref(getTodayDate())
 async function fetchWeather() {
   const response = await fetch(apiUrl + city.value + "&appid=" + apiKey + "&units=metric")
 
-  // TODO: 天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
+  // TODO_Moeka: 天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
   // try catch文を使用する
 
   const data = await response.json()
