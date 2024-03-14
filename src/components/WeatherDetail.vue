@@ -4,9 +4,8 @@ import { getTodayDate } from "../modules";
 import { WEATHER } from "../consts";
 import { WEATHER_EN } from "../types";
 
-// TODO_Moeka: APIキーを.envファイルに移動
-const apiKey = "37639b3722b929b763122aeed5ee06eb";
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+const apiKey = import.meta.env.VITE_API_KEY
+const apiUrl = import.meta.env.VITE_API_URL
 
 const city = ref("");
 
