@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { getTodayDate } from "../modules";
+import { useData } from "../store"
+import { getTodayDate } from "../modules"
 import { WEATHER } from "../consts";
 import { WEATHER_EN } from "../types";
 
-const apiKey = import.meta.env.VITE_API_KEY
-const apiUrl = import.meta.env.VITE_API_URL
+//いろいろ中途半場にしすぎて何をしたいのかわからない
+//真剣にやりました
+const useData = useData();
 
 const city = ref("");
-
 const weatherDetail = ref({
   weather: "",
   temp_max: "",
@@ -21,15 +22,17 @@ const isDataFetched = ref(false);
 
 const today = ref(getTodayDate());
 
-// TODO_Moeka: この関数もmodules/に移動
+// この関数もmodules/に移動
 async function fetchWeather(): Promise<void> {
-  // TODO_Moeka: urlとapiKeyを.envファイルからロード(dotenvライブラリ)
-  const response = await fetch(
-    apiUrl + city.value + "&appid=" + apiKey + "&units=metric"
-  );
+ 
 
-  // TODO_Moeka: 天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
+  //  天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
   // try catch文を使用する
+  try{
+
+  }catch(e){
+    
+  }
 
   const data = await response.json();
 
@@ -108,3 +111,4 @@ async function fetchWeather(): Promise<void> {
   color: red;
 }
 </style>
+../../modules../../consts../../types
