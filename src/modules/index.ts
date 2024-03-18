@@ -1,6 +1,9 @@
-import {WEEK_DAY} from "../consts"
+import { WEEK_DAY } from "../consts"
+import { useData } from '../store'
+import { reactive } from 'vue'
 
 
+const useData = useData()
 const apiKey = import.meta.env.VITE_API_KEY
 const apiUrl = import.meta.env.VITE_API_URL
 
@@ -16,7 +19,7 @@ async function fetchWeather(): Promise<void> {
   try{
     const data = await response.json();
 
-    if (!data) return
+   
     weatherDetail.value.weather =
     "天気: " + WEATHER[data.weather[0].main as WEATHER_EN];
   weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
@@ -25,6 +28,8 @@ async function fetchWeather(): Promise<void> {
   weatherDetail.value.humidity = "湿度: " + data.main.humidity + "%";
 
   isDataFetched.value = true;
+
+  if (!data) return
 
   }catch{
     return 

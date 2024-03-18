@@ -1,22 +1,34 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useData } from "../store"
-import { getTodayDate } from "../modules"
-import { WEATHER } from "../consts";
-import { WEATHER_EN } from "../types";
+import { ref, reactive } from "vue";
+import { useUserStore } from "../../stores"
+import { getTodayDate } from "../../modules"
+import { WEATHER } from "../../consts";
+import { WEATHER_EN } from "../../types";
 
-//いろいろ中途半場にしすぎて何をしたいのかわからない
-//真剣にやりました
-const useData = useData();
-
-const city = ref("");
+//storeの使い方がなかなか理解できない
+const useWeatherData = useUserStore();
 const weatherDetail = ref({
   weather: "",
   temp_max: "",
   temp_min: "",
   wind: "",
   humidity: "",
-});
+})
+
+//cityの名前が入力された後に関数を動かせるようにする
+const fetchWeatherDetail = getTodayDate()
+const submitCity = () =>{
+  useWeatherData.weatherDetail.weather = weatherDetail.value.weather
+  useWeatherData.weatherDetail.temp_max = weatherDetail.value.temp_max
+  useWeatherData.weatherDetail.temp_min = weatherDetail.value.weather
+  useWeatherData.weatherDetail.wind = weatherDetail.value.temp_min
+  useWeatherData.weatherDetail.humidity = weatherDetail.value.humidity
+
+  fetchWeatherDetail.fetchWeather()
+}
+
+const city = ref("");
+
 
 const isDataFetched = ref(false);
 
@@ -28,24 +40,27 @@ async function fetchWeather(): Promise<void> {
 
   //  天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
   // try catch文を使用する
+
+
+  const data = await fetchWeatherDetail.response.json();
+
   try{
-
-  }catch(e){
     
-  }
 
-  const data = await response.json();
-
-  if (!data) return;
-
-  weatherDetail.value.weather =
-    "天気: " + WEATHER[data.weather[0].main as WEATHER_EN];
+  weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main as WEATHER_EN];
   weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
   weatherDetail.value.temp_min = Math.round(data.main.temp_min) + "°C";
   weatherDetail.value.wind = "風速: " + data.wind.speed + "km/h";
   weatherDetail.value.humidity = "湿度: " + data.main.humidity + "%";
 
   isDataFetched.value = true;
+
+  }catch(e){
+    if (!data)
+     return ;
+ 
+
+  }
 }
 </script>
 
@@ -53,7 +68,7 @@ async function fetchWeather(): Promise<void> {
   <div class="showWeather">
     <div class="search">
       <input type="text" v-model="city" placeholder="city name" />
-      <button @click="fetchWeather">Get Weather</button>
+      <button @click="submitCity">Get Weather</button>
     </div>
 
     <p class="today"></p>
