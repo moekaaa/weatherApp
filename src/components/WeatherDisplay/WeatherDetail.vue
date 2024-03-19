@@ -1,34 +1,38 @@
 <script setup lang="ts">
-import { ref, reactive } from "vue";
-import { useUserStore } from "../../stores"
-import { getTodayDate } from "../../modules"
-import { WEATHER } from "../../consts";
-import { WEATHER_EN } from "../../types";
+import { ref, reactive } from 'vue';
+import { useUserStore } from '../../stores';
+import { getTodayDate } from '../../modules';
+import { WEATHER } from '../../consts';
+import { WEATHER_EN } from '../../types';
 
 //storeの使い方がなかなか理解できない
+// Review: https://zenn.dev/sa2knight/books/storybook-7-with-vue-3/viewer/pinia
+// Review: このサイトがわかりやすそう
 const useWeatherData = useUserStore();
 const weatherDetail = ref({
-  weather: "",
-  temp_max: "",
-  temp_min: "",
-  wind: "",
-  humidity: "",
-})
+  weather: '',
+  temp_max: '',
+  temp_min: '',
+  wind: '',
+  humidity: '',
+});
 
 //cityの名前が入力された後に関数を動かせるようにする
-const fetchWeatherDetail = getTodayDate()
-const submitCity = () =>{
-  useWeatherData.weatherDetail.weather = weatherDetail.value.weather
-  useWeatherData.weatherDetail.temp_max = weatherDetail.value.temp_max
-  useWeatherData.weatherDetail.temp_min = weatherDetail.value.weather
-  useWeatherData.weatherDetail.wind = weatherDetail.value.temp_min
-  useWeatherData.weatherDetail.humidity = weatherDetail.value.humidity
+// Review: getTodayDate()の返り値は、3月19日(火)のような文字列なので、
+// Review: const todayDate = getTodayDate()にするのが適切
+const fetchWeatherDetail = getTodayDate();
+const submitCity = () => {
+  useWeatherData.weatherDetail.weather = weatherDetail.value.weather;
+  useWeatherData.weatherDetail.temp_max = weatherDetail.value.temp_max;
+  useWeatherData.weatherDetail.temp_min = weatherDetail.value.weather;
+  useWeatherData.weatherDetail.wind = weatherDetail.value.temp_min;
+  useWeatherData.weatherDetail.humidity = weatherDetail.value.humidity;
 
-  fetchWeatherDetail.fetchWeather()
-}
+  // Review: ごめん！ここの処理がよくわからなかった、、
+  fetchWeatherDetail.fetchWeather();
+};
 
-const city = ref("");
-
+const city = ref('');
 
 const isDataFetched = ref(false);
 
@@ -36,30 +40,23 @@ const today = ref(getTodayDate());
 
 // この関数もmodules/に移動
 async function fetchWeather(): Promise<void> {
- 
-
   //  天気の情報が返ってこなかった時(存在しない都市の名前の入力時)の処理を追加(エラーハンドリング)
   // try catch文を使用する
 
-
+  // Review: dataには何が入る感じかな？
   const data = await fetchWeatherDetail.response.json();
 
-  try{
-    
+  try {
+    weatherDetail.value.weather =
+      '天気: ' + WEATHER[data.weather[0].main as WEATHER_EN];
+    weatherDetail.value.temp_max = Math.round(data.main.temp_max) + '°C';
+    weatherDetail.value.temp_min = Math.round(data.main.temp_min) + '°C';
+    weatherDetail.value.wind = '風速: ' + data.wind.speed + 'km/h';
+    weatherDetail.value.humidity = '湿度: ' + data.main.humidity + '%';
 
-  weatherDetail.value.weather = "天気: " + WEATHER[data.weather[0].main as WEATHER_EN];
-  weatherDetail.value.temp_max = Math.round(data.main.temp_max) + "°C";
-  weatherDetail.value.temp_min = Math.round(data.main.temp_min) + "°C";
-  weatherDetail.value.wind = "風速: " + data.wind.speed + "km/h";
-  weatherDetail.value.humidity = "湿度: " + data.main.humidity + "%";
-
-  isDataFetched.value = true;
-
-  }catch(e){
-    if (!data)
-     return ;
- 
-
+    isDataFetched.value = true;
+  } catch (e) {
+    if (!data) return;
   }
 }
 </script>
