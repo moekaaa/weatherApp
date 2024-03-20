@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import { defineStore } from 'pinia';
 
 //基本的に変数はここで管理するようにする

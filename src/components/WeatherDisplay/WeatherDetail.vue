@@ -15,7 +15,7 @@ const useWeatherData = useUserStore();
 
 const todayDate = getTodayDate()
 
-
+const fetchWeather = getTodayDate();
 
 //ボタンを押したときに実行して情報を持ってくる
 const submitCity = () => {
@@ -24,8 +24,8 @@ const submitCity = () => {
   //city nameが入力されたタイミングでfetchWeather()を実行して値を獲得する
   //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する
 
-  const fetchWeatherDetail = getTodayDate();
-
+  
+  fetchWeather.fetchWeather(city);
 };
 
 const city = ref('');
