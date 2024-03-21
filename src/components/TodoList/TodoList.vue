@@ -3,8 +3,8 @@
 import { ref } from "vue";
 
 //幅が広い？
-
-const appdata = {
+//なんでエラー起きるのかわかりません。
+const addToDo = {
     data(){
         return{
             //inputは最初は空
@@ -32,7 +32,7 @@ const appdata = {
     <h1>タスクの追加</h1>
     <div class="add">
       <input type="text" v-model="task" placeholder="enter your task" />
-      <button @click="add_todo">追加</button>
+      <button @click="addToDo">追加</button>
     </div>
 
     <h1>ToDo List</h1>
