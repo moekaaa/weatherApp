@@ -1,11 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
 
-const app = creteApp(App)
-app.use(router)
-app/MouseEvent('#app')
+//const app = creteApp(App)
+//app.use(router)
+//app/MouseEvent('#app')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

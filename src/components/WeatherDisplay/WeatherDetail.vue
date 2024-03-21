@@ -3,38 +3,25 @@ import { ref } from 'vue';
 import { useUserStore } from '../../stores';
 import { getTodayDate } from '../../modules';
 
-
-
 const useWeatherData = useUserStore();
 
 //ToDo_Takuya: DBとつないでcreate table/ insert dataする
-//たくやくんは敬語無し、私は敬語あり→どっちのコメントかすぐわかるかな
 //cityの名前が入力された後に関数を動かせるようにする
 // Review: getTodayDate()の返り値は、3月19日(火)のような文字列なので、
 // Review: const todayDate = getTodayDate()にするのが適切
 
 const todayDate = getTodayDate()
+const city = ref('');
 
-const fetchWeather = getTodayDate();
 
 //ボタンを押したときに実行して情報を持ってくる
 const submitCity = () => {
-
   // Review: ごめん！ここの処理がよくわからなかった、、
-  //city nameが入力されたタイミングでfetchWeather()を実行して値を獲得する
-  //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する
-
-  
-  fetchWeather.fetchWeather(city);
+  //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する  
+  todayDate.getWeatherData()
 };
 
-const city = ref('');
-
 const isDataFetched = ref(false);
-
-const today = ref(getTodayDate());
-
-
 </script>
 
 <template>
@@ -48,7 +35,7 @@ const today = ref(getTodayDate());
     <p id="weekDayName"></p>
 
     <div v-if="isDataFetched" class="weatherDetail">
-      <p class="today">今日の日付: {{ today }}</p>
+      <p class="today">今日の日付: {{ useWeatherData.today }}</p>
       <!-- TODO: 天気によってアイコンを表示 -->
       <!-- const weather = weatherDetail()とかで呼び出せるのでは？ -->
       <p class="weather">{{ useWeatherData.weatherDetail.weather }}</p>
