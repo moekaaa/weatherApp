@@ -8,7 +8,6 @@ import { useUserStore } from '../stores';
 
 
 // Review: useUserStoreという名前に変更(../stores/index.tsのファイルではこの名前で定義されている)
-const useWeatherData = useUserStore();
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -21,6 +20,7 @@ export const getWeatherData = async () => {
 // useWeatherData を使って天気情報を更新する
   //useWeatherData.today = new Date().toLocaleDateString();
  // useWeatherData.city = useWeatherData.CITY[useWeatherData.cityIndex]; 
+ const useWeatherData = useUserStore();
 
    // fetch を使って天気情報を取得する
    const response = await fetch(
