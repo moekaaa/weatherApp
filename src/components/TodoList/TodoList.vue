@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-//幅が広い？
+//幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
 //なんでエラー起きるのかわかりません。
 const addToDo = {
     data(){
