@@ -32,7 +32,7 @@ export const getWeatherData = async () => {
  
       // useWeatherData を使って天気情報を更新する
       useWeatherData.weatherDetail.weather =
-        '天気: ' + useWeatherData.WEATHER[data.weather[0].main as useWeatherData.WEATHER_EN];
+        '天気: ' + WEATHER[data.weather[0].main as WEATHER_EN];
       useWeatherData.weatherDetail.temp_max = Math.round(data.main.temp_max) + '°C';
       useWeatherData.weatherDetail.temp_min = Math.round(data.main.temp_min) + '°C';
       useWeatherData.weatherDetail.wind = '風速: ' + data.wind.speed + 'km/h';
