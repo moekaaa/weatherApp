@@ -36,8 +36,7 @@ export const getWeatherData = async () => {
       weatherDataStore.weatherDetail.tempMin = Math.round(data.main.temp_min) + '°C';
       weatherDataStore.weatherDetail.wind = '風速: ' + data.wind.speed + 'km/h';
       weatherDataStore.weatherDetail.humidity = '湿度: ' + data.main.humidity + '%';
- 
- //     // データ取得が完了したことを示すフラグを設定する
+
  //     useWeatherData.isDataFetched.value = true;
     } catch (error: unknown) {
       // errorをanyかunknown型にする違いを調べてみてください
