@@ -1,6 +1,6 @@
 import { WEEK_DAY } from '../consts';
 // Review: ファイルとフォルダの名前を合わせる
-import { useUserStore } from '../stores';
+import { useWeatherDataStore } from '../stores';
 
  import { WEATHER } from '../consts';
  import { WEATHER_EN } from '../types';
@@ -20,28 +20,29 @@ export const getWeatherData = async () => {
 // useWeatherData を使って天気情報を更新する
   //useWeatherData.today = new Date().toLocaleDateString();
  // useWeatherData.city = useWeatherData.CITY[useWeatherData.cityIndex]; 
- const useWeatherData = useUserStore();
+    const weatherDataStore = useWeatherDataStore();
 
    // fetch を使って天気情報を取得する
-   const response = await fetch(
-    apiUrl + useWeatherData.city + '&appid=' + apiKey + '&units=metric'
-     
+    const response = await fetch(
+      apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric'  
     );
     try {
       const data = await response.json();
  
       // useWeatherData を使って天気情報を更新する
-      useWeatherData.weatherDetail.weather =
+      weatherDataStore.weatherDetail.weather =
         '天気: ' + WEATHER[data.weather[0].main as WEATHER_EN];
-      useWeatherData.weatherDetail.temp_max = Math.round(data.main.temp_max) + '°C';
-      useWeatherData.weatherDetail.temp_min = Math.round(data.main.temp_min) + '°C';
-      useWeatherData.weatherDetail.wind = '風速: ' + data.wind.speed + 'km/h';
-      useWeatherData.weatherDetail.humidity = '湿度: ' + data.main.humidity + '%';
+      weatherDataStore.weatherDetail.tempMax = Math.round(data.main.temp_max) + '°C';
+      weatherDataStore.weatherDetail.tempMin = Math.round(data.main.temp_min) + '°C';
+      weatherDataStore.weatherDetail.wind = '風速: ' + data.wind.speed + 'km/h';
+      weatherDataStore.weatherDetail.humidity = '湿度: ' + data.main.humidity + '%';
  
  //     // データ取得が完了したことを示すフラグを設定する
  //     useWeatherData.isDataFetched.value = true;
-    } catch (error) {
-      console.error('天気情報の取得中にエラーが発生しました:', error);
+    } catch (error: unknown) {
+      // errorをanyかunknown型にする違いを調べてみてください
+      // if(something instanceof type)という書き方は、タイプガードと言って、errorはError型の時のみ実行する
+      if (error instanceof Error) throw new Error("Error: " + error.message);
     }  
  }
 
