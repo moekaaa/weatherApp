@@ -1,8 +1,10 @@
 <script setup>
+import WeatherDetail from '../components/WeatherDisplay/WeatherDetail.vue';
+
 </script>
 
 <template>
-    <div class="about">
-        <h1>This is an about page</h1>
+    <div class="home">
+        <WeatherDetail />
     </div>
 </template>
