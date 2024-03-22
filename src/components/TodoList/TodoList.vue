@@ -36,7 +36,7 @@ const addToDo = {
     </div>
 
     <h1>ToDo List</h1>
-    <ul class="Lest-group">
+    <ul class="list-group">
         <template v-for="task in todo_list">
             <li class="list-group-item">{{ task }}</li>
         </template>

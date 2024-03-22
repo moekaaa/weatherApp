@@ -5,6 +5,18 @@ import { defineStore } from 'pinia';
 //イベント発生ごとにstoreで状態管理するようにしてvueファイルでも
 //tsファイルでもstoreをimportして変数を使えるようにする
 
+export const useTodoDataStore = defineStore('todo', () => {
+  const todoList = ref({
+    id: 0,
+    todoText: '',
+    isDone: false
+  });
+
+  return {
+    todoList
+  }
+})
+
 export const useWeatherDataStore = defineStore('weather', () => {
   const todayDate = ref('');
   const weatherDetail = ref({
