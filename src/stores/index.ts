@@ -5,9 +5,7 @@ import { defineStore } from 'pinia';
 //イベント発生ごとにstoreで状態管理するようにしてvueファイルでも
 //tsファイルでもstoreをimportして変数を使えるようにする
 
-export const useUserStore = defineStore('user', () => {
-  const firstName = ref('');
-  const lastName = ref('');
+export const useWeatherDataStore = defineStore('weather', () => {
   const todayDate = ref('');
   const weatherDetail = ref({
     weather: '',
@@ -19,10 +17,18 @@ export const useUserStore = defineStore('user', () => {
   const city = ref('');
 
   return {
-    firstName,
-    lastName,
     todayDate,
     weatherDetail,
     city,
+  }
+})
+
+export const useUserDataStore = defineStore('user', () => {
+  const firstName = ref('');
+  const lastName = ref('');
+
+  return {
+    firstName,
+    lastName,
   };
 });
