@@ -25,3 +25,5 @@ dist-ssr
 
 # 開発用
 bun.lockb
+
+.env
