@@ -15,11 +15,13 @@ export const useWeatherDataStore = defineStore('weather', () => {
     humidity: '',
   });
   const city = ref('');
+  const isDataFetched = ref(false);
 
   return {
     todayDate,
     weatherDetail,
     city,
+    isDataFetched
   }
 })
 
