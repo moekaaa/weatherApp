@@ -1,12 +1,12 @@
 // ユニオン型というタイプ定義
 export type WEEK_DAY_TYPE =
-  | "Sun"
-  | "Mon"
-  | "Tue"
-  | "Wed"
-  | "Thu"
-  | "Fri"
-  | "Sat";
+  | "日"
+  | "月"
+  | "火"
+  | "水"
+  | "木"
+  | "金"
+  | "土";
 
 export type WEATHER_EN = "Sunny" | "Clouds" | "Rain" | "Snowy" | "undefined";
 

@@ -2,13 +2,13 @@ import { WEATHER_TYPE, WEEK_DAY_TYPE } from "../types";
 import { TIPS_FOR_TODAY } from "../types";
 
 export const WEEK_DAY: Record<number, WEEK_DAY_TYPE> = {
-  0: "Sun",
-  1: "Mon",
-  2: "Tue",
-  3: "Wed",
-  4: "Thu",
-  5: "Fri",
-  6: "Sat",
+  0: "日",
+  1: "月",
+  2: "火",
+  3: "水",
+  4: "木",
+  5: "金",
+  6: "土",
 };
 
 export const WEATHER: WEATHER_TYPE = {

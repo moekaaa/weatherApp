@@ -26,8 +26,9 @@ const submitCity = async (e: Event) => {
 <template>
   <div class="showWeather">
     <form class="search" @submit.prevent="submitCity">
-      <input type="text" v-model="city" placeholder="city name" />
-      <button type="submit">Get Weather</button>
+      <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ -->
+      <input type="text" v-model="city" placeholder="地名を入力" />
+      <button type="submit">天気の情報を取得</button>
     </form>
 
     <p class="today"></p>
