@@ -1,4 +1,5 @@
 import { WEATHER_TYPE, WEEK_DAY_TYPE } from "../types";
+import { TIPS_FOR_TODAY_EVEN, TIPS_FOR_TODAY_ODD } from "../types";
 
 export const WEEK_DAY: Record<number, WEEK_DAY_TYPE> = {
   0: "Sun",
@@ -20,7 +21,7 @@ export const WEATHER: WEATHER_TYPE = {
 
 //スピリチュアルになってしまった、、書いてたら楽しくなっちゃって、、元気になる一言を奇数月と偶数月に入れようとしました
 //const, store, typeフォルダの特徴を勉強します
-export const CHEERUP : TIPS_FOR_TODAY_ODD<number, string> = {
+export const CHEERUP : TIPS_FOR_TODAY_ODD = {
   1: "今日も一日良い日になります♪",
   2: "「3日坊主」でもいいんだよ。10回やれば1か月やったことになります",
   3: "成長しようとしているから「悩み」も生まれます",
