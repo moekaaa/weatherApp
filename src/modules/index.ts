@@ -22,10 +22,10 @@ export const getWeatherData = async () => {
  // useWeatherData.city = useWeatherData.CITY[useWeatherData.cityIndex]; 
     const weatherDataStore = useWeatherDataStore();
 
+    const url = apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric'  
+
    // fetch を使って天気情報を取得する
-    const response = await fetch(
-      apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric'  
-    );
+    const response = await fetch(url);
     try {
       const data = await response.json();
  
