@@ -1,10 +1,9 @@
-<script setup lang="ts">
-
-
+<script setup>
+import HomeView from "./views/HomeView.vue";
 </script>
 
 <template>
-  <WeatherDetail />
+  <HomeView />
 </template>
 
 <style>
