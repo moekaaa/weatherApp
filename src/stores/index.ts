@@ -1,45 +1,41 @@
-import { ref } from 'vue';
-import { defineStore } from 'pinia';
+import { ref } from "vue";
+import { defineStore } from "pinia";
 
 //基本的に変数はここで管理するようにする
 //イベント発生ごとにstoreで状態管理するようにしてvueファイルでも
 //tsファイルでもstoreをimportして変数を使えるようにする
 
-export const useTodoDataStore = defineStore('todo', () => {
-  const todoList = ref({
-    id: 0,
-    todoText: '',
-    isDone: false
-  });
+export const useTodoDataStore = defineStore("todo", () => {
+  const todoList = ref([]);
 
   return {
-    todoList
-  }
-})
+    todoList,
+  };
+});
 
-export const useWeatherDataStore = defineStore('weather', () => {
-  const todayDate = ref('');
+export const useWeatherDataStore = defineStore("weather", () => {
+  const todayDate = ref("");
   const weatherDetail = ref({
-    weather: '',
-    tempMax: '',
-    tempMin: '',
-    wind: '',
-    humidity: '',
+    weather: "",
+    tempMax: "",
+    tempMin: "",
+    wind: "",
+    humidity: "",
   });
-  const city = ref('');
+  const city = ref("");
   const isDataFetched = ref(false);
 
   return {
     todayDate,
     weatherDetail,
     city,
-    isDataFetched
-  }
-})
+    isDataFetched,
+  };
+});
 
-export const useUserDataStore = defineStore('user', () => {
-  const firstName = ref('');
-  const lastName = ref('');
+export const useUserDataStore = defineStore("user", () => {
+  const firstName = ref("");
+  const lastName = ref("");
 
   return {
     firstName,
