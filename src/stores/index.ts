@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 //基本的に変数はここで管理するようにする
 //イベント発生ごとにstoreで状態管理するようにしてvueファイルでも
 //tsファイルでもstoreをimportして変数を使えるようにする
+//ありがとう！わかりやすいです！
 
 export const useTodoDataStore = defineStore("todo", () => {
   const todoList = ref([]);
