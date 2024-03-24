@@ -25,4 +25,16 @@ const router = createRouter({
   ]
 })
 
+export const getRoutes = () => {
+  const routes: Array<RouteRecordRaw> = [
+{
+  path: '/weatherDetail',
+  name: RouteName.WeatherDetail,
+  component: WeatherDetail,
+
+}
+   
+  ]
+}
+
 export default router
