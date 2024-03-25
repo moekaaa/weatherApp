@@ -11,6 +11,18 @@ const cheerUpMessage = getCheerUpMessage()
 
 <template>
     <div class="user-panel">
-        <p>{{cheerUpMessage}}</p>
+        <p class="cheer-up-message">{{cheerUpMessage}}</p>
     </div>
 </template>
+
+<style>
+.user-panel {
+    height: 300px;
+    width: 100%;
+    background-color: lightgreen;
+}
+.cheer-up-message {
+    color: #050023;
+    text-align: center;
+}
+</style>
