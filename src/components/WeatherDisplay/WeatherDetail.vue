@@ -7,7 +7,7 @@ const weatherDataStore = useWeatherDataStore();
 
 //ToDo_Takuya: DBとつないでcreate table/ insert dataする
 
-const city = ref('');
+const cityInput = ref('');
 
 //ボタンを押したときに実行して情報を持ってくる
 const submitCity = async (e: Event) => {
@@ -16,7 +16,7 @@ const submitCity = async (e: Event) => {
   //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する  
   const todayDate = getTodayDate()
   weatherDataStore.todayDate = todayDate
-  weatherDataStore.city = city.value
+  weatherDataStore.city = cityInput.value
   
   await getWeatherData()
   weatherDataStore.isDataFetched = true
@@ -27,7 +27,7 @@ const submitCity = async (e: Event) => {
   <div class="showWeather">
     <form class="search" @submit.prevent="submitCity">
       <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ -->
-      <input type="text" v-model="city" placeholder="地名を入力" />
+      <input type="text" v-model="cityInput" placeholder="地名を入力" />
       <button type="submit">天気の情報を取得</button>
     </form>
 
