@@ -1,7 +1,8 @@
 <script setup>
 import TodoList from '../components/TodoList/TodoList.vue';
 import WeatherDetail from '../components/WeatherDisplay/WeatherDetail.vue';
-import UserPanel from "../components/UserPanel.vue"
+//エラーが出るのでコメントアウト
+//import UserPanel from "../components/UserPanel.vue"
 
 </script>
 
@@ -9,6 +10,6 @@ import UserPanel from "../components/UserPanel.vue"
     <div class="home">
         <WeatherDetail />
         <TodoList />
-        <UserPanel />
+        <!-- <UserPanel /> -->
     </div>
 </template>
