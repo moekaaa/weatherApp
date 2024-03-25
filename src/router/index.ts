@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 
@@ -25,6 +25,7 @@ const router = createRouter({
   ]
 })
 
+// エラーが出るのでコメントアウト
 // export const getRoutes = () => {
 //   const routes: Array<RouteRecordRaw> = [
 // {
