@@ -1,55 +1,51 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useWeatherDataStore } from '../../stores';
-import { getTodayDate } from '../../modules';
+import { getTodayDate, getWeatherData } from '../../modules';
 
-const useWeatherData = useWeatherDataStore();
+const weatherDataStore = useWeatherDataStore();
 
-//cityの名前が入力された後に関数を動かせるようにする
-// Review: getTodayDate()の返り値は、3月19日(火)のような文字列なので、
-// Review: const todayDate = getTodayDate()にするのが適切
+//ToDo_Takuya: DBとつないでcreate table/ insert dataする
 
-//土日結局できなくて、今日も寝坊しちゃってできませんでした。。
-//reviewしてくれてありがとう！by moeka
-
-const todayDate = getTodayDate()
 const city = ref('');
-//本当はtodayDate.getWeatherData()の引数にcityを渡してmoduleの関数で実行
-//したかったんだけどできないので、全部いったんstoreに値を格納します
-useWeatherData.city = city.value
-
 
 //ボタンを押したときに実行して情報を持ってくる
-const submitCity = () => {
+const submitCity = async (e: Event) => {
+  e.preventDefault()
   // Review: ごめん！ここの処理がよくわからなかった、、
-  todayDate.getWeatherData()
+  //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する  
+  const todayDate = getTodayDate()
+  weatherDataStore.todayDate = todayDate
+  weatherDataStore.city = city.value
+  
+  await getWeatherData()
+  weatherDataStore.isDataFetched = true
 };
-
-const isDataFetched = ref(false);
 </script>
 
 <template>
   <div class="showWeather">
-    <div class="search">
-      <input type="text" v-model="city" placeholder="city name" />
-      <button @click="submitCity">Get Weather</button>
-    </div>
+    <form class="search" @submit.prevent="submitCity">
+      <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ -->
+      <input type="text" v-model="city" placeholder="地名を入力" />
+      <button type="submit">天気の情報を取得</button>
+    </form>
 
     <p class="today"></p>
     <p id="weekDayName"></p>
 
-    <div v-if="isDataFetched" class="weatherDetail">
-      <p class="today">今日の日付: {{ useWeatherData.today }}</p>
+    <div v-if="weatherDataStore.isDataFetched" class="weatherDetail">
+      <p class="today">今日の日付: {{ weatherDataStore.todayDate }}</p>
       <!-- TODO: 天気によってアイコンを表示 -->
       <!-- const weather = weatherDetail()とかで呼び出せるのでは？ -->
-      <p class="weather">{{ useWeatherData.weatherDetail.weather }}</p>
+      <p class="weather">{{ weatherDataStore.weatherDetail.weather }}</p>
       <div class="temp">
-        <p class="temp_min">{{ useWeatherData.weatherDetail.temp_min }}</p>
+        <p class="temp_min">{{ weatherDataStore.weatherDetail.tempMin }}</p>
         <div class="temp_border"></div>
-        <p class="temp_max">{{ useWeatherData.weatherDetail.temp_max }}</p>
+        <p class="temp_max">{{ weatherDataStore.weatherDetail.tempMax }}</p>
       </div>
-      <p class="wind">{{ useWeatherData.weatherDetail.wind }}</p>
-      <p class="humidity">{{ useWeatherData.weatherDetail.humidity }}</p>
+      <p class="wind">{{ weatherDataStore.weatherDetail.wind }}</p>
+      <p class="humidity">{{ weatherDataStore.weatherDetail.humidity }}</p>
     </div>
   </div>
 </template>
