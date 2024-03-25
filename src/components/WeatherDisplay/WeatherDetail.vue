@@ -5,11 +5,10 @@ import { getTodayDate, getWeatherData } from '../../modules';
 
 const weatherDataStore = useWeatherDataStore();
 
-//ToDo_Takuya: DBとつないでcreate table/ insert dataする
+//ToDo_Moeka: DBとつないでcreate table/ insert dataする
 
 const cityInput = ref('');
 
-//ボタンを押したときに実行して情報を持ってくる
 const submitCity = async (e: Event) => {
   e.preventDefault()
   // Review: ごめん！ここの処理がよくわからなかった、、
@@ -26,7 +25,7 @@ const submitCity = async (e: Event) => {
 <template>
   <div class="showWeather">
     <form class="search" @submit.prevent="submitCity">
-      <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ -->
+      <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ :)-->
       <input type="text" v-model="cityInput" placeholder="地名を入力" />
       <button type="submit">天気の情報を取得</button>
     </form>
@@ -37,7 +36,7 @@ const submitCity = async (e: Event) => {
     <div v-if="weatherDataStore.isDataFetched" class="weatherDetail">
       <p class="today">今日の日付: {{ weatherDataStore.todayDate }}</p>
       <!-- TODO: 天気によってアイコンを表示 -->
-      <!-- const weather = weatherDetail()とかで呼び出せるのでは？ -->
+      <!-- const weather = weatherDetail()とかで呼び出せるのでは？ :)-->
       <p class="weather">{{ weatherDataStore.weatherDetail.weather }}</p>
       <div class="temp">
         <p class="temp_min">{{ weatherDataStore.weatherDetail.tempMin }}</p>
