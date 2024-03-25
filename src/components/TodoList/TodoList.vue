@@ -1,44 +1,27 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useTodoDataStore } from "../../stores";
 
 //幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
 //なんでエラー起きるのかわかりません。
-const addToDo = {
-    data(){
-        return{
-            //inputは最初は空
-            input: "",
-            //listも最初は空
-            todo_list: []
-        }
-    },
-    methods: {
-        add_todo(){
-            //下の分でtodo_listに値を追加してく
-            this.todo_list.push(
-                this.input
-            )
-            //ボタンを押したら入力した値が空になる
-            this.input = ""             
-            
-        }
-    }
-}
+const taskInput = ref("");
+const todoDataStore = useTodoDataStore()
+
 </script>
 
 <template>
   <div class="container">
     <h1>タスクの追加</h1>
     <div class="add">
-      <input type="text" v-model="task" placeholder="enter your task" />
-      <button @click="addToDo">追加</button>
+      <input type="text" v-model="taskInput" placeholder="タスクを追加してください" />
+      <button @click="">追加</button>
     </div>
 
     <h1>ToDo List</h1>
-    <ul class="list-group">
-        <template v-for="task in todo_list">
-            <li class="list-group-item">{{ task }}</li>
+    <ul class="todo-list-group">
+        <template v-for="task in todoDataStore.todoList">
+            <li class="todo-list-group-item">{{ task }}</li>
         </template>
     </ul>
   </div>
