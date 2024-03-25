@@ -1,4 +1,4 @@
-import { WEEK_DAY } from '../consts';
+import { CHEERUP_FOR_EVEN_NUMBER_MONTH, CHEERUP_FOR_ODD_NUMBER_MONTH, WEEK_DAY } from '../consts';
 // Review: ファイルとフォルダの名前を合わせる
 import { useWeatherDataStore } from '../stores';
 
@@ -59,4 +59,13 @@ export function getTodayDate(): string {
   return dateString;
 }
 
-
+export const getCheerUpMessage = () => {
+  const newDate = new Date()
+  const month = newDate.getMonth() + 1
+  const date = newDate.getDate()
+  if (month % 2 === 0) {
+    return CHEERUP_FOR_EVEN_NUMBER_MONTH[date]
+  } else {
+    return CHEERUP_FOR_ODD_NUMBER_MONTH[date]
+  }
+} 
