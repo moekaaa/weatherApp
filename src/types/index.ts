@@ -22,3 +22,10 @@ export type WEATHER_TYPE = Record<WEATHER_EN, WEATHER_JP>;
 // }
 
 export type TIPS_FOR_TODAY = Record<number, string>;
+
+export type TODO = {
+  id: number;
+  todoText: string;
+  isDone: boolean;
+  createdAt: Date;
+}
