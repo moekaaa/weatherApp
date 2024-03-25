@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
+import { TODO } from "../types";
 
 //基本的に変数はここで管理するようにする
 //イベント発生ごとにstoreで状態管理するようにしてvueファイルでも
@@ -7,7 +8,14 @@ import { defineStore } from "pinia";
 //ありがとう！わかりやすいです！
 
 export const useTodoDataStore = defineStore("todo", () => {
-  const todoList = ref([]);
+  const todoList = ref<TODO[]>([
+    {
+      id: 1,
+      todoText: "Todo1",
+      isDone: false,
+      createdAt: new Date(),
+    }
+  ]);
 
   return {
     todoList,
