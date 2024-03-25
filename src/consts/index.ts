@@ -22,7 +22,7 @@ export const WEATHER: WEATHER_TYPE = {
 
 //スピリチュアルになってしまった、、書いてたら楽しくなっちゃって、、元気になる一言を奇数月と偶数月に入れようとしました
 //const, store, typeフォルダの特徴を勉強します
-export const CHEERUP : TIPS_FOR_TODAY = {
+export const CHEERUP_FOR_ODD_MONTH : TIPS_FOR_TODAY = {
   1: "今日も一日良い日になります♪",
   2: "「3日坊主」でもいいんだよ。10回やれば1か月やったことになります",
   3: "成長しようとしているから「悩み」も生まれます",
@@ -57,7 +57,7 @@ export const CHEERUP : TIPS_FOR_TODAY = {
 };
 
 
-export const CHEERUP_EVEN: TIPS_FOR_TODAY = {
+export const CHEERUP_FOR_EVEN_MONTH: TIPS_FOR_TODAY = {
   1: "あなたは太陽です",
   2: "1日のToDoを作りましょう。目標のない人は、目標を立てた人にかないません",
   3: "今日もあなたらしい花を咲かせましょう",
