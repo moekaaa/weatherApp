@@ -15,6 +15,7 @@ export const WEATHER: WEATHER_TYPE = {
   Sunny: "晴れ",
   Clouds: "曇り",
   Rain: "雨",
+  Mist: "霧雨",
   Snowy: "雪",
   undefined: "不明",
 };
