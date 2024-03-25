@@ -3,6 +3,7 @@
 import { ref } from "vue";
 import { useTodoDataStore } from "../../stores";
 import { addTodoItem } from "../../modules/db";
+import { TODO } from "../../types";
 
 //幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
 //なんでエラー起きるのかわかりません。
@@ -10,7 +11,14 @@ const taskInput = ref("");
 const todoDataStore = useTodoDataStore()
 
 const handleSubmit = async () => {
-    await addTodoItem(taskInput.value)
+    // await addTodoItem(taskInput.value)
+    const newTodo: TODO = {
+        id: todoDataStore.todoList.length + 1,
+        todoText: taskInput.value,
+        isDone: false,
+        createdAt: new Date(),
+    }
+    todoDataStore.todoList = [...todoDataStore.todoList, newTodo]
 }
 
 </script>
