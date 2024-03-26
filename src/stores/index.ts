@@ -8,14 +8,7 @@ import { TODO } from "../types";
 //ありがとう！わかりやすいです！
 
 export const useTodoDataStore = defineStore("todo", () => {
-  const todoList = ref<TODO[]>([
-    {
-      id: 1,
-      todoText: "Todo1",
-      isDone: false,
-      createdAt: new Date(),
-    }
-  ]);
+  const todoList = ref<TODO[]>([]);
 
   return {
     todoList,
