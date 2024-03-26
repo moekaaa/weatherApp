@@ -26,7 +26,7 @@ import HomeView from "./views/HomeView.vue";
   <main>
     <!-- routerを使ってトップ画面表示させたい、、 -->
       <RouterView />
-     <HomeView />
+     <!-- <HomeView /> -->
   </main>
   
 </template>
