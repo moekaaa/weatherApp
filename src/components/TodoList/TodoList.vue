@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue';
 import { useTodoDataStore } from '../../stores';
 import { addTodoItem, getTodoItem } from '../../modules/db';
-import { TODO } from '../../types';
 
 //幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
 //なんでエラー起きるのかわかりません。
