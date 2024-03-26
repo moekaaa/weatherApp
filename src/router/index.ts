@@ -4,8 +4,7 @@ import AppTop from '../views/AppTop.vue'
 
 import HomeView from '../views/HomeView.vue'
 
-
-const routeSettings: RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'AppTop',
@@ -14,8 +13,8 @@ const routeSettings: RouteRecordRaw[] = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: routeSettings,
+  history: createWebHistory("/"),
+  routes,
 
 });
 export default router;
