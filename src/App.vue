@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { reactive, provide } from 'vue';
-import HomeView from './views/HomeView.vue';
 //import { RouterView } from "vue-router";
 //import { MEMBER } from "/types";
 
