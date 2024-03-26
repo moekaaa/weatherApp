@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useWeatherDataStore } from '../../stores';
 import { getTodayDate, getWeatherData } from '../../modules';
+import { BACKGROUND_DARK_COLOR } from '../../consts/colors';
 
 const weatherDataStore = useWeatherDataStore();
 
@@ -59,7 +60,7 @@ const submitCity = async (e: Event) => {
 .showWeather {
   height: 300px;
   width: 100%;
-  background-color: #050023;
+  background-color: v-bind(BACKGROUND_DARK_COLOR);
 }
 .search-form {
   display: flex;
@@ -76,12 +77,12 @@ const submitCity = async (e: Event) => {
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(255, 255, 255);
-  color: #050023;
+  color: v-bind(BACKGROUND_DARK_COLOR);
   padding: 0.5rem 1rem;
 }
 .weather-search-button {
   background-color: rgb(255, 255, 255);
-  color: #050023;
+  color: v-bind(BACKGROUND_DARK_COLOR);
   padding: 0.5rem 1rem;
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
