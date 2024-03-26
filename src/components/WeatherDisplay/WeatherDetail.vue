@@ -26,7 +26,6 @@ const submitCity = async (e: Event) => {
 <template>
   <div class="showWeather">
     <form class="search-form" @submit.prevent="submitCity">
-      <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ -->
       <input
         class="weather-search-input"
         type="text"
