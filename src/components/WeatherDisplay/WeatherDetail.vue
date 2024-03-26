@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useWeatherDataStore } from '../../stores';
 import { getTodayDate, getWeatherData } from '../../modules';
+import { BACKGROUND_DARK_COLOR } from '../../consts/colors';
 
 const weatherDataStore = useWeatherDataStore();
 
@@ -10,24 +11,37 @@ const weatherDataStore = useWeatherDataStore();
 const cityInput = ref('');
 
 const submitCity = async (e: Event) => {
-  e.preventDefault()
-  // Review: ごめん！ここの処理がよくわからなかった、、
-  //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する  
-  const todayDate = getTodayDate()
-  weatherDataStore.todayDate = todayDate
-  weatherDataStore.city = cityInput.value
-  
-  await getWeatherData()
-  weatherDataStore.isDataFetched = true
+  e.preventDefault();
+  const todayDate = getTodayDate();
+  weatherDataStore.todayDate = todayDate;
+  weatherDataStore.city = cityInput.value;
+
+  await getWeatherData();
+  weatherDataStore.isDataFetched = true;
 };
+
+// const weather = ref('');
+
+// const weatherDetail = () => {
+//   weather.value = weatherDataStore.weatherDetail.weather;
+// };
+
+// onMounted(() => {
+//   weatherDetail();
+// });
 </script>
 
 <template>
   <div class="showWeather">
-    <form class="search" @submit.prevent="submitCity">
-      <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ :)-->
-      <input type="text" v-model="cityInput" placeholder="地名を入力" />
-      <button type="submit">天気の情報を取得</button>
+    <form class="search-form" @submit.prevent="submitCity">
+      <input
+        class="weather-search-input"
+        type="text"
+        v-model="cityInput"
+        placeholder="地名を入力" />
+      <button class="weather-search-button" type="submit">
+        天気の情報を取得
+      </button>
     </form>
 
     <p class="today"></p>
@@ -53,15 +67,38 @@ const submitCity = async (e: Event) => {
 .showWeather {
   height: 300px;
   width: 100%;
-  background-color: gray;
+  background-color: v-bind(BACKGROUND_DARK_COLOR);
 }
-.search {
+.search-form {
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
-  gap: 10px;
+  row-gap: 20px;
   justify-content: center;
   align-items: center;
+}
+.weather-search-input {
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(255, 255, 255);
+  color: v-bind(BACKGROUND_DARK_COLOR);
+  padding: 0.5rem 1rem;
+}
+.weather-search-button {
+  height: 35px;
+  width: 150px;
+  background-color: rgb(255, 255, 255);
+  color: v-bind(BACKGROUND_DARK_COLOR);
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .weatherDetail {
   display: flex;
