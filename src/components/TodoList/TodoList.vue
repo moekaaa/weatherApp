@@ -31,6 +31,7 @@ const handleSubmit = async () => {
       <button class="todo-search-button" @click="handleSubmit">追加</button>
     </form>
 
+    <!-- TODO_Moeka: todoリストのアイテムをスタイリング -->
     <h1>ToDo List</h1>
     <ul class="todo-list-group">
       <template v-for="task in todoDataStore.todoList">
