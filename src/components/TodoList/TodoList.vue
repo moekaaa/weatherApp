@@ -22,13 +22,14 @@ const handleSubmit = async () => {
 <template>
   <div class="container">
     <h1>タスクの追加</h1>
-    <div class="add">
+    <form class="todo-add-form">
       <input
+        class="todo-search-input"
         type="text"
         v-model="taskInput"
         placeholder="タスクを追加してください" />
-      <button @click="handleSubmit">追加</button>
-    </div>
+      <button class="todo-search-button" @click="handleSubmit">追加</button>
+    </form>
 
     <h1>ToDo List</h1>
     <ul class="todo-list-group">
@@ -39,4 +40,29 @@ const handleSubmit = async () => {
   </div>
 </template>
 
-<style></style>
+<style>
+.todo-add-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.todo-search-input {
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(255, 255, 255);
+  color: #050023;
+  padding: 0.5rem 1rem;
+}
+.todo-search-button {
+  height: 30px;
+  width: 100px;
+  background-color: rgb(255, 255, 255);
+  color: #050023;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+}
+</style>
