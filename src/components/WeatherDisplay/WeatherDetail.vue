@@ -11,24 +11,30 @@ const cityInput = ref('');
 
 //ボタンを押したときに実行して情報を持ってくる
 const submitCity = async (e: Event) => {
-  e.preventDefault()
+  e.preventDefault();
   // Review: ごめん！ここの処理がよくわからなかった、、
-  //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する  
-  const todayDate = getTodayDate()
-  weatherDataStore.todayDate = todayDate
-  weatherDataStore.city = cityInput.value
-  
-  await getWeatherData()
-  weatherDataStore.isDataFetched = true
+  //city nameを引数として、moduleのfetchWeather()を実行して値を獲得する
+  const todayDate = getTodayDate();
+  weatherDataStore.todayDate = todayDate;
+  weatherDataStore.city = cityInput.value;
+
+  await getWeatherData();
+  weatherDataStore.isDataFetched = true;
 };
 </script>
 
 <template>
   <div class="showWeather">
-    <form class="search" @submit.prevent="submitCity">
+    <form class="search-form" @submit.prevent="submitCity">
       <!-- TODO_Moeka: 入力欄とボタンをデザインしても面白いかも？ -->
-      <input type="text" v-model="cityInput" placeholder="地名を入力" />
-      <button type="submit">天気の情報を取得</button>
+      <input
+        class="weather-search-input"
+        type="text"
+        v-model="cityInput"
+        placeholder="地名を入力" />
+      <button class="weather-search-button" type="submit">
+        天気の情報を取得
+      </button>
     </form>
 
     <p class="today"></p>
@@ -54,15 +60,33 @@ const submitCity = async (e: Event) => {
 .showWeather {
   height: 300px;
   width: 100%;
-  background-color: gray;
+  background-color: #050023;
 }
-.search {
+.search-form {
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
-  gap: 10px;
+  row-gap: 20px;
   justify-content: center;
   align-items: center;
+}
+.weather-search-input {
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(255, 255, 255);
+  color: #050023;
+  padding: 0.5rem 1rem;
+}
+.weather-search-button {
+  background-color: rgb(255, 255, 255);
+  color: #050023;
+  padding: 0.5rem 1rem;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
 }
 .weatherDetail {
   display: flex;

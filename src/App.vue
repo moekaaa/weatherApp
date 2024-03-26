@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { reactive, provide } from "vue";
-import HomeView from "./views/HomeView.vue";
+import { reactive, provide } from 'vue';
+import HomeView from './views/HomeView.vue';
 //import { RouterView } from "vue-router";
 //import { MEMBER } from "/types";
 
@@ -25,10 +25,9 @@ import HomeView from "./views/HomeView.vue";
   </header>
   <main>
     <!-- routerを使ってトップ画面表示させたい、、 -->
-      <RouterView />
-     <!-- <HomeView /> -->
+    <RouterView />
+    <!-- <HomeView /> -->
   </main>
-  
 </template>
 
 <style>
@@ -36,14 +35,14 @@ main {
   border: white 1px solid;
   padding: 10px;
 }
-*{
-    margin: 0;
-    padding: 0;
-    font-family: ComicSansMS;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: ComicSansMS;
+  box-sizing: border-box;
 }
-body{
-  background: #555;
+body {
+  background: #050023;
   color: white;
 }
 #breadcrumbs ul li {
@@ -60,7 +59,7 @@ body{
   color: white;
 }
 #breadcrumbs ul li:before {
-  content: " > ";
+  content: ' > ';
 }
 #breadcrumbs ul li:first-child:before {
   content: none;
