@@ -3,7 +3,6 @@ import {
   CHEERUP_FOR_ODD_NUMBER_MONTH,
   WEEK_DAY,
 } from '../consts';
-// Review: ファイルとフォルダの名前を合わせる
 import { useWeatherDataStore } from '../stores';
 
 import { WEATHER } from '../consts';
@@ -13,9 +12,6 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export const getWeatherData = async () => {
-  // useWeatherData を使って天気情報を更新する
-  //useWeatherData.today = new Date().toLocaleDateString();
-  // useWeatherData.city = useWeatherData.CITY[useWeatherData.cityIndex];
   const weatherDataStore = useWeatherDataStore();
 
   const url =
