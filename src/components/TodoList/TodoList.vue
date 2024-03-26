@@ -1,8 +1,8 @@
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useTodoDataStore } from "../../stores";
-import { addTodoItem } from "../../modules/db";
+import { addTodoItem, getTodoItem } from "../../modules/db";
 import { TODO } from "../../types";
 
 //幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
@@ -10,15 +10,20 @@ import { TODO } from "../../types";
 const taskInput = ref("");
 const todoDataStore = useTodoDataStore()
 
+onMounted(async () => {
+    todoDataStore.todoList = await getTodoItem()
+})
+
 const handleSubmit = async () => {
-    // await addTodoItem(taskInput.value)
-    const newTodo: TODO = {
-        id: todoDataStore.todoList.length + 1,
-        todoText: taskInput.value,
-        isDone: false,
-        createdAt: new Date(),
-    }
-    todoDataStore.todoList = [...todoDataStore.todoList, newTodo]
+    const newData = await addTodoItem(taskInput.value)
+    todoDataStore.todoList = newData
+    // const newTodo: TODO = {
+    //     id: todoDataStore.todoList.length + 1,
+    //     todoText: taskInput.value,
+    //     isDone: false,
+    //     createdAt: new Date(),
+    // }
+    // todoDataStore.todoList = [...todoDataStore.todoList, newTodo]
 }
 
 </script>
