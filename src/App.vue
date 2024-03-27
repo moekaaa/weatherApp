@@ -40,7 +40,7 @@ main {
   box-sizing: border-box;
 }
 body {
-  background: #050023;
+  background-color: #050023;
   color: white;
 }
 #breadcrumbs ul li {
