@@ -10,6 +10,38 @@ const routes: RouteRecordRaw[] = [
     name: 'AppTop',
     component: AppTop
   },  
+  {
+    path: '/member/memberList',
+    name: 'MemberList',
+    component: () => import('../views/member/MemberList.vue')
+  },
+  {
+    path: '/member/memberDetail',
+    name: 'MemberDetail',
+    component: () => import('../views/member/MemberDetail.vue')
+  },
+  {
+    path: '/HomeView',
+    name: 'HomeView',
+    component: () => import('../views/HomeView.vue')
+
+  },
+  {
+    path: '/WeatherDisplay/WeatherDetail.vue',
+    name: 'WeatherDetail',
+    component: () => import('../components/WeatherDisplay/WeatherDetail.vue')
+  },
+  {
+    path: '/TodoList/TodoList.vue',
+    name: 'ToDo',
+    component: () => import('../components/TodoList/TodoList.vue')
+  },
+  {
+    path: '/WeatherDisplay/WeatherDetail.vue',
+    name: 'Calendar',
+    component: () => import('../components/Calendar/Schedule.vue')
+  },
+ 
 ];
 
 const router = createRouter({

@@ -10,11 +10,23 @@ import UserPanel from '../components/UserPanel.vue';
 </script>
 
 <template>
+     <RouterLink v-bind:to='{name: "AppTop"}'>
+    AppTop</RouterLink>
     <div class="home">
-        <WeatherDetail />
+        <!-- <WeatherDetail />
         <TodoList />
-        <Schedule />
+        <Schedule /> -->
         <date />
-         <UserPanel />
+        <UserPanel />
+        <RouterLink v-bind:to='{name: "WeatherDetail"}'>
+        ・weather</RouterLink>
+        <br>
+        <RouterLink v-bind:to='{name: "ToDo"}'>
+        ・ToDo</RouterLink>
+        <br>
+        <RouterLink v-bind:to='{name: "Calendar"}'>
+        ・Calendar</RouterLink>
+        
+    <br>
     </div>
 </template>

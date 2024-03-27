@@ -1,10 +1,13 @@
 <script setup>
 import HomeView from './HomeView.vue';
 import MenuBar from '../components/menuBar/MenuBar.vue';
+import { RouterLink } from 'vue-router';
+
 </script>
 
 <template>
   <h1>AppTop</h1>
+  
   <nav id="breadcrumbs">
     <ul>
       <li>TOP</li>
@@ -12,7 +15,13 @@ import MenuBar from '../components/menuBar/MenuBar.vue';
   </nav>
   <MenuBar />
   <section>
-    <p>member管理はこちらから</p>
-    <HomeView />
+    <RouterLink v-bind:to='{name: "MemberList"}'>
+    member管理はこちらから</RouterLink>
+    <br>
+    <RouterLink  v-bind:to='{name: "HomeView"}'>
+      Home</RouterLink>
+
+
+
   </section>
 </template>
