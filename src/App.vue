@@ -39,10 +39,6 @@ main {
   font-family: ComicSansMS;
   box-sizing: border-box;
 }
-body {
-  background-color: #050023;
-  color: white;
-}
 #breadcrumbs ul li {
   display: inline;
   list-style-type: none;
