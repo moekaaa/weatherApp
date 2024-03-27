@@ -11,4 +11,4 @@ Veautifyを使用
 https://vuetifyjs.com/en/introduction/why-vuetify/#what-is-vuetify3f
 
 使用できるアイコンはここを参照
-https://pictogrammers.com/library/mdi/
+https://fontawesome.com/icons
