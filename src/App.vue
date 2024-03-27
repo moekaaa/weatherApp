@@ -1,20 +1,5 @@
 <script setup lang="ts">
-//import { RouterView } from "vue-router";
-//import { MEMBER } from "/types";
-
-//いったん今はDBつながないで表示したい
-// const memberList = new Map<number, MEMBER>();
-// memberList.set(1, {
-//   id: 1,
-//   name: "Moeka",
-//   note: "student"
-// });
-// memberList.set(2, {
-//   id: 2,
-//   name: "Takuya",
-//   note: "teacher"
-// });
-// provide("memberList", reactive(memberList));
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -22,9 +7,7 @@
     <h1>vue practice</h1>
   </header>
   <main>
-    <!-- routerを使ってトップ画面表示させたい、、 -->
     <RouterView />
-    <!-- <HomeView /> -->
   </main>
 </template>
 
