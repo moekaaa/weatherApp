@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue';
 import { useTodoDataStore } from '../../stores';
 import { addTodoItem, getTodoItem } from '../../modules/db';
-import { BACKGROUND_DARK_COLOR } from '../../consts/colors';
 
 //幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
 //なんでエラー起きるのかわかりません。
@@ -54,14 +53,14 @@ const handleSubmit = async () => {
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(255, 255, 255);
-  color: v-bind(BACKGROUND_DARK_COLOR);
+  color: var(--dark-mode-bg-color);
   padding: 0.5rem 1rem;
 }
 .todo-search-button {
   height: 30px;
   width: 100px;
   background-color: rgb(255, 255, 255);
-  color: v-bind(BACKGROUND_DARK_COLOR);
+  color: var(--dark-mode-bg-color);
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   border-radius: 50px;

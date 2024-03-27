@@ -6,7 +6,6 @@ import router from './router';
 import { registerLicense } from '@syncfusion/ej2-base';
 import veautify from './lib/veautify';
 import '@fortawesome/fontawesome-free/css/all.css';
-
 import './style.css';
 
 registerLicense('');
