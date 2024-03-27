@@ -83,6 +83,7 @@ const submitCity = async (e: Event) => {
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(255, 255, 255);
+  color: var(--dark-mode-bg-color);
   padding: 0.5rem 1rem;
 }
 .weather-search-button {
