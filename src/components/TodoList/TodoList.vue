@@ -61,7 +61,7 @@ const handleSubmit = async () => {
   height: 30px;
   width: 100px;
   background-color: rgb(255, 255, 255);
-  color: #050023;
+  color: v-bind(BACKGROUND_DARK_COLOR);
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   border-radius: 50px;
