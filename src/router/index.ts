@@ -1,53 +1,50 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
-import AppTop from '../views/AppTop.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
+import AppTop from '../views/AppTop.vue';
 
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'AppTop',
-    component: AppTop
-  },  
+    component: AppTop,
+  },
   {
     path: '/member/memberList',
     name: 'MemberList',
-    component: () => import('../views/member/MemberList.vue')
+    component: () => import('../views/member/MemberList.vue'),
   },
   {
     path: '/member/memberDetail',
     name: 'MemberDetail',
-    component: () => import('../views/member/MemberDetail.vue')
+    component: () => import('../views/member/MemberDetail.vue'),
   },
   {
     path: '/HomeView',
     name: 'HomeView',
-    component: () => import('../views/HomeView.vue')
-
+    component: () => import('../views/HomeView.vue'),
   },
   {
     path: '/WeatherDisplay/WeatherDetail.vue',
     name: 'WeatherDetail',
-    component: () => import('../components/WeatherDisplay/WeatherDetail.vue')
+    component: () => import('../components/WeatherDisplay/WeatherDetail.vue'),
   },
   {
     path: '/TodoList/TodoList.vue',
     name: 'ToDo',
-    component: () => import('../components/TodoList/TodoList.vue')
+    component: () => import('../components/TodoList/TodoList.vue'),
   },
   {
     path: '/WeatherDisplay/WeatherDetail.vue',
     name: 'Calendar',
-    component: () => import('../components/Calendar/Schedule.vue')
+    component: () => import('../components/calendar/Schedule.vue'),
   },
- 
 ];
 
 const router = createRouter({
-  history: createWebHistory("/"),
+  history: createWebHistory('/'),
   routes,
-
 });
 export default router;
 
