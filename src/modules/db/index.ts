@@ -31,3 +31,33 @@ export const addTodoItem = async (todoText: string) => {
     //     }
     // }) 
 }
+
+export const addMember = async () => {
+    const data = await JSON.parse(localStorage.getItem(localStorageKey) || "[]")
+    return data
+}
+
+export const getMember = async (todoText: string) => {
+    const data = {
+        id: new Date().getTime().toString(),
+        todoText: todoText,
+        isDone: false,
+        createdAt: new Date(),
+    }
+    const prevData = await getTodoItem()
+    const newData = [...prevData, data]
+    const jsonData = JSON.stringify(newData)
+
+    localStorage.setItem(localStorageKey, jsonData)
+
+    return newData
+
+    // This is for prisma operation
+    // return await prisma.todo.create({
+    //     data: {
+    //         todoText: todoText,
+    //         isDone: false,
+    //         createdAt: new Date(),
+    //     }
+    // }) 
+}

@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { TODO } from '../types';
+import { TODO, MEMBER } from '../types';
 
 export const useTodoDataStore = defineStore('todo', () => {
   const todoList = ref<TODO[]>([
@@ -14,6 +14,20 @@ export const useTodoDataStore = defineStore('todo', () => {
 
   return {
     todoList,
+  };
+});
+
+export const useMemberDataStore = defineStore('member', () => {
+  const memberList = ref<MEMBER[]>([
+    {
+      id: 1,
+      name: 'Moeka',
+      age: 26,
+    },
+  ]);
+
+  return {
+    memberList,
   };
 });
 

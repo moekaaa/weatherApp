@@ -1,15 +1,16 @@
 <script setup>
-import DarkModeButton from '../../components/menuBar/DarkModeButton.vue';
+import MenuBar from '../../components/menuBar/MenuBar.vue';
+//import { useMemberDataStore } from '../../modules/db';
+//import { addMember, getMember } from '../../modules/db';
 </script>
 
 <template>
     
     <RouterLink v-bind:to='{name: "AppTop"}'>
     AppTop</RouterLink>
-    
-     <h1>memberList</h1>
+
   <div>
-    <DarkModeButton />
+    <MenuBar />
   </div>
 
 </template>
