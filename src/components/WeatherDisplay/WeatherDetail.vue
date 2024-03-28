@@ -10,10 +10,12 @@ const weatherDataStore = useWeatherDataStore();
 const cityInput = ref('');
 
 const submitCity = async (e: Event) => {
+  console.log(cityInput.value);
   e.preventDefault();
   const todayDate = getTodayDate();
   weatherDataStore.todayDate = todayDate;
   weatherDataStore.city = cityInput.value;
+  console.log(weatherDataStore.city);
 
   await getWeatherData();
   weatherDataStore.isDataFetched = true;
@@ -31,6 +33,7 @@ const submitCity = async (e: Event) => {
 </script>
 
 <template>
+  <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
   <div class="showWeather">
     <form class="search-form" @submit.prevent="submitCity">
       <input

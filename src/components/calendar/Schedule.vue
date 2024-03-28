@@ -7,7 +7,7 @@ import { ScheduleComponent } from '@syncfusion/ej2-vue-schedule'
 </script>
 
 <template>
-    
+    <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
         
 
 </template>

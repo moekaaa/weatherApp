@@ -3,8 +3,6 @@ import { onMounted, ref } from 'vue';
 import { useTodoDataStore } from '../../stores';
 import { addTodoItem, getTodoItem } from '../../modules/db';
 
-//幅が広い？ -> 追加処理を実行するのは、関数で処理した方がいいかも
-//なんでエラー起きるのかわかりません。
 const taskInput = ref('');
 const todoDataStore = useTodoDataStore();
 
@@ -19,6 +17,7 @@ const handleSubmit = async () => {
 </script>
 
 <template>
+  <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
   <div class="container">
     <h1>タスクの追加</h1>
     <form class="todo-add-form">
