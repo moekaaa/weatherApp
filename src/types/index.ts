@@ -29,3 +29,9 @@ export type TODO = {
   isDone: boolean;
   createdAt: Date;
 }
+
+export type MEMBER = {
+  id: number;
+  name: string;
+  age: number;
+}
