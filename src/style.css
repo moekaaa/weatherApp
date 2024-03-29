@@ -8,8 +8,10 @@
   --dark-mode-color: #050023;
   --light-mode-color: #f3f3f3;
 
-  color: light-dark(var(--dark-mode-color), var(--light-mode-color));
-  background-color: light-dark(var(--light-mode-color), var(--dark-mode-color));
+  --color: light-dark(var(--dark-mode-color), var(--light-mode-color));
+  color: var(--color);
+  --bg-color: light-dark(var(--light-mode-color), var(--dark-mode-color));
+  background-color: var(--bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
