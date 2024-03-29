@@ -5,10 +5,11 @@
 
   color-scheme: light dark;
 
-  --dark-mode-bg-color: #050023;
+  --dark-mode-color: #050023;
+  --light-mode-color: #f3f3f3;
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--dark-mode-bg-color);
+  color: light-dark(var(--dark-mode-color), var(--light-mode-color));
+  background-color: light-dark(var(--light-mode-color), var(--dark-mode-color));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
