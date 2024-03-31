@@ -20,8 +20,6 @@ export const WEATHER: WEATHER_TYPE = {
   undefined: "不明",
 };
 
-//スピリチュアルになってしまった、、書いてたら楽しくなっちゃって、、元気になる一言を奇数月と偶数月に入れようとしました
-//const, store, typeフォルダの特徴を勉強します
 export const CHEERUP_FOR_ODD_NUMBER_MONTH : TIPS_FOR_TODAY = {
   1: "今日も一日良い日になります♪",
   2: "「3日坊主」でもいいんだよ。10回やれば1か月やったことになります",
