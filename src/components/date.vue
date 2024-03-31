@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { getTodayDate } from '../modules';
 
+const TodayDate = getTodayDate();
 const name =ref("moeka");
-
 //ref, setInterval, functionの使い方理解
 
 const now = new Date();
@@ -24,6 +25,7 @@ function changeTime(): void {
   const newTime = new Date();
   const newTimeStr = newTime.toLocaleTimeString();
   timeStrRef.value = newTimeStr;
+  console.log(TodayDate);
 
 }
 

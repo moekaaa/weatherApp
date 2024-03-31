@@ -14,13 +14,13 @@ const apiUrl = import.meta.env.VITE_API_URL;
 export const getWeatherData = async () => {
   const weatherDataStore = useWeatherDataStore();
 
-  const url =
-    apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
+  const url = apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
 
   // fetch を使って天気情報を取得する
   const response = await fetch(url);
   try {
     const data = await response.json();
+    console.log(data);
 
     // useWeatherData を使って天気情報を更新する
     weatherDataStore.weatherDetail.weather =
