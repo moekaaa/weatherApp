@@ -33,7 +33,10 @@ const submitCity = async (e: Event) => {
 </script>
 
 <template>
+  <div class ="router">
   <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
+  > 
+  <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink></div>
   <div class="showWeather">
     <form class="search-form" @submit.prevent="submitCity">
       <input

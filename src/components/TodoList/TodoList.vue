@@ -17,7 +17,11 @@ const handleSubmit = async () => {
 </script>
 
 <template>
+   <div class ="router">
   <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
+  > 
+  <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink></div>
+  
   <div class="container">
     <h1>タスクの追加</h1>
     <form class="todo-add-form">
