@@ -34,12 +34,7 @@ const handleSubmit = async () => {
       <button class="todo-search-button" @click="handleSubmit">追加</button>
     </form>
 
-    <!-- TODO_Moeka: todoリストのアイテムをスタイリング -->
-    <!-- for文の入れ子で表示できる？
-    たくやくんへ
-    無理せずで大丈夫だからね！私がたくさん機能を増やしちゃっているのに全然進められなくてごめん！
-    今日todoのスタイリングは終わらせるのと、出来たらCalendarの形作ろうとtryはして帰ります！（笑）
-    今日も無理せず頑張ろうね！！　(=_=)ｚｚｚ -->
+    
     <h1>ToDo List</h1>
     <ul class="todo-list-group">
       <template v-for="task in todoDataStore.todoList">
