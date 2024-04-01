@@ -33,10 +33,11 @@ const submitCity = async (e: Event) => {
 </script>
 
 <template>
-  <div class ="router">
-  <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
-  > 
-  <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink></div>
+  <div class="router">
+    <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
+    >
+    <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink>
+  </div>
   <div class="showWeather">
     <form class="search-form" @submit.prevent="submitCity">
       <input
@@ -80,7 +81,7 @@ const submitCity = async (e: Event) => {
   row-gap: 20px;
   justify-content: center;
   align-items: center;
-  color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
 }
 .weather-search-input {
   height: 30px;
@@ -89,7 +90,7 @@ const submitCity = async (e: Event) => {
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(255, 255, 255);
-  color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
   padding: 0.5rem 1rem;
 }
 .weather-search-button {
