@@ -26,19 +26,19 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/HomeView.vue'),
   },
   {
-    path: '/WeatherDisplay/WeatherDetail.vue',
+    path: '/WeatherDisplay/WeatherDetail',
     name: 'WeatherDetail',
     component: () => import('../components/WeatherDisplay/WeatherDetail.vue'),
   },
   {
-    path: '/TodoList/TodoList.vue',
+    path: '/TodoList/TodoList',
     name: 'ToDo',
     component: () => import('../components/TodoList/TodoList.vue'),
   },
   {
-    path: '/WeatherDisplay/WeatherDetail.vue',
+    path: '/WeatherDisplay/WeatherDetail',
     name: 'Calendar',
-    component: () => import('../components/Calendar/Schedule.vue'),
+    component: () => import('../components/Calendar/TaskSchedule.vue'),
   },
 ];
 
