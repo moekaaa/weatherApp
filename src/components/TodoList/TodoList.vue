@@ -62,14 +62,14 @@ const handleSubmit = async () => {
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(255, 255, 255);
-  color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
   padding: 0.5rem 1rem;
 }
 .todo-search-button {
   height: 30px;
   width: 100px;
   background-color: rgb(255, 255, 255);
-  color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   border-radius: 50px;
