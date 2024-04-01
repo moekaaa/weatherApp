@@ -17,11 +17,12 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class ="router">
-  <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
-  > 
-  <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink></div>
-  
+  <div class="router">
+    <RouterLink v-bind:to="{ name: 'AppTop' }"> AppTop</RouterLink>
+    >
+    <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink>
+  </div>
+
   <div class="container">
     <h1>タスクの追加</h1>
     <form class="todo-add-form">
@@ -42,7 +43,7 @@ const handleSubmit = async () => {
     <h1>ToDo List</h1>
     <ul class="todo-list-group">
       <template v-for="task in todoDataStore.todoList">
-        <li class="todo-list-group-item">・　{{ task. }}</li>
+        <li class="todo-list-group-item">{{ task }}</li>
       </template>
     </ul>
   </div>
@@ -61,14 +62,14 @@ const handleSubmit = async () => {
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(255, 255, 255);
-  color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
   padding: 0.5rem 1rem;
 }
 .todo-search-button {
   height: 30px;
   width: 100px;
   background-color: rgb(255, 255, 255);
-  color: var(--dark-mode-bg-color);
+  color: var(--dark-mode-color);
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   border-radius: 50px;

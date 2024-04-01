@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onUnmounted, ref } from 'vue';
 import { getTodayDate } from '../modules';
 
 const TodayDate = getTodayDate();
-const name =ref("moeka");
+const name = ref('moeka');
 //ref, setInterval, functionの使い方理解
 
 const now = new Date();
-
 
 const date = ref(now.getDate());
 const month = ref(now.getMonth() + 1);
@@ -18,30 +17,27 @@ const nowStr = now.toLocaleTimeString();
 //同じく現在の時刻文字列をテンプレート変数としてrefで用意
 const timeStrRef = ref(nowStr);
 
-
 //新しい時刻に変更する関数
 function changeTime(): void {
-
   const newTime = new Date();
   const newTimeStr = newTime.toLocaleTimeString();
   timeStrRef.value = newTimeStr;
   console.log(TodayDate);
-
 }
 
 //changeTime関数を1秒ごとに実行
-setInterval(changeTime, 1000)
+const timer = setInterval(changeTime, 1000);
 
-
+onUnmounted(() => {
+  clearInterval(timer);
+});
 </script>
 
 <template>
-  <h1>こんにちは！{{name}} さん</h1>
-  <h1>{{ today }} </h1>
+  <h1>こんにちは！{{ name }} さん</h1>
+  <h1>{{ today }}</h1>
   <p>{{ timeStrRef }}</p>
   <WeatherDetail />
 </template>
 
-<style>
-
-</style>
+<style></style>
