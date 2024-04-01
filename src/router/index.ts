@@ -38,7 +38,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/WeatherDisplay/WeatherDetail',
     name: 'Calendar',
-    component: () => import('../components/Calendar/TaskSchedule.vue'),
+    component: () => import('../components/calendar/TaskSchedule.vue'),
   },
 ];
 
