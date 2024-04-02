@@ -105,6 +105,22 @@ const doRemove = async (task) => {
 </template>
 
 <style>
+.container{
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  min-width :100px;
+  row-gap: 1.5em;
+}
+.todo-add-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+#remaining-characters.max {
+  color: #dd3535;
+}
 .todo-add-form {
   display: flex;
   flex-direction: column;
