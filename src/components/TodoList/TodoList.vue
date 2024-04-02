@@ -14,6 +14,22 @@ onMounted(async () => {
       
   } */
 });
+//inputの文字数制限
+const limitTextLength = () => {
+  let maxLength = 10; // 文字数の上限
+  //変数名わかりにくいから考え直す
+  let rmnngChrctrs = document.getElementById('rmnngChrctrs');
+  
+  if (taskInput.value.length > maxLength) {
+    console.log(taskInput.value);
+    taskInput.value = taskInput.value.substr(0, maxLength);
+    rmnngChrctrs.classList.add('max');
+  } else {
+    rmnngChrctrs.classList.remove('max');
+  }
+
+  rmnngChrctrs.textContent = maxLength - taskInput.value.length;
+};
 
 const handleSubmit = async () => {
   const newData = await addTodoItem(taskInput.value);
@@ -45,45 +61,47 @@ const doRemove = async (task) => {
     <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink>
   </div>
 
-  <div class="container">
-    <h1>タスクの追加</h1>
-    <form class="todo-add-form">
-      <input
-        class="todo-search-input"
-        type="text"
-        v-model="taskInput"
-        placeholder="タスクを追加してください" />
-      <button class="todo-search-button" @click="handleSubmit">追加</button>
-    </form>
+    <div class="container">
+      <h1>タスクの追加</h1>
+      <form class="todo-add-form">
+        <input
+          class="todo-search-input"
+          type="text"
+          v-model="taskInput"
+          @input="limitTextLength();"
+          placeholder="タスクを追加してください" />
+          <div>残りの文字数：<span 
+            id="rmnngChrctrs"
+            >10</span></div>
+        <button class="todo-search-button" @click="handleSubmit">追加</button>
+      </form>
+  
+
+      <table  class="todo-list-group">
+        <thead>
+          <tr>
+            <th class="comment">タスク</th>
+            <th class="state">状態</th>
+            <th class="date">追加日</th>
+            <th class="button">-</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="task in todoDataStore.todoList" v-bind:key="task.id">
+            <td>{{ task.todoText }}</td>
+            <td class="button">
+            <button @click="doChangeState(task)">{{ task.isDone }}</button>
+            </td>
+            <td>{{  task.createdAt }}</td>
+            <td><button @click.ctrl="doRemove(task)">
+              削除
+            </button></td>
+            
+          </tr>
+        </tbody>
+      </table>
   </div>
-
-  <table  class="todo-list-group">
-    <thead>
-      <tr>
-        <th class="id">ID</th>
-        <th class="comment">コメント</th>
-        <th class="state">状態</th>
-        <th class="date">日付</th>
-        <th class="button">-</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr v-for="task in todoDataStore.todoList" v-bind:key="task.id">
-        <td>{{ task.id }}</td>
-        <td>{{ task.todoText }}</td>
-        <td class="button">
-        <button @click="doChangeState(task)">{{ task.isDone }}</button>
-        </td>
-        <td>{{  task.createdAt }}</td>
-        <td><button @click.ctrl="doRemove(task)">
-          削除
-        </button></td>
-        
-      </tr>
-    </tbody>
-  </table>
-
 </template>
 
 <style>
@@ -117,7 +135,8 @@ const doRemove = async (task) => {
 }
 thead th {
   border-bottom: 2px solid black; /*#d31c4a */
-  color: black;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.692);
 }
 th,
 th {
