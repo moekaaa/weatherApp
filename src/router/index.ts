@@ -2,15 +2,26 @@ import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import AppTop from '../views/AppTop.vue';
 
-import HomeView from '../views/HomeView.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'AppTop',
     component: AppTop,
+    /* children: [
+      {
+        path: '/member/memberList',
+        name: 'MemberDetail',
+        component: () => import('../views/member/MemberList.vue'),
+        meta: { 
+          layout: 'layoutTop'
+        
+        }
+      }
+    name: 'AppTop',
+    ] */
   },
-  {
+   {
     path: '/member/memberList',
     name: 'MemberList',
     component: () => import('../views/member/MemberList.vue'),
