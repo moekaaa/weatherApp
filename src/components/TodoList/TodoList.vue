@@ -16,7 +16,7 @@ onMounted(async () => {
 });
 //inputの文字数制限
 const limitTextLength = () => {
-  let maxLength = 10; // 文字数の上限
+  let maxLength = 20; // 文字数の上限
   //変数名わかりにくいから考え直す
   let rmnngChrctrs = document.getElementById('rmnngChrctrs');
   
@@ -72,9 +72,16 @@ const doRemove = async (task) => {
           placeholder="タスクを追加してください" />
           <div>残りの文字数：<span 
             id="rmnngChrctrs"
-            >10</span></div>
+            >20</span></div>
         <button class="todo-search-button" @click="handleSubmit">追加</button>
       </form>
+
+      <!-- タスクのステータスでフィルター -->
+      <!-- <label v-for="label in options" >
+      <input type="radio"
+        v-model="current"
+        v-bind:value="label.value">{{ label.label }}
+      </label> -->
   
 
       <table  class="todo-list-group">
@@ -110,7 +117,7 @@ const doRemove = async (task) => {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  min-width :100px;
+  min-width :200px;
   row-gap: 1.5em;
 }
 .todo-add-form {
@@ -118,7 +125,7 @@ const doRemove = async (task) => {
   flex-direction: column;
   row-gap: 20px;
 }
-#remaining-characters.max {
+#rmnngChrctrs.max {
   color: #dd3535;
 }
 .todo-add-form {
