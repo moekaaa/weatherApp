@@ -1,9 +1,89 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import AppTop from '../views/AppTop.vue';
+import HomeView from '../views/HomeView.vue';
+import MemberList from '../views/member/MemberList.vue';
+import MemberDetail from '../views/member/MemberDetail.vue';
+import TodoList from '../components/TodoList/TodoList.vue';
+import TaskSchedule from '../components/calendar/TaskSchedule.vue';
+import WeatherDetail from '../components/WeatherDisplay/WeatherDetail.vue';
+
+/*  //security向上の為に、getRoutesして画面遷移を切り分けます
+export const RouteName = {
+  AppTop: "AppTop",
+  HomeView: "HomeView",
+  MemberList: "MemberList",
+  MemberDetail: "MemberDetail",
+  TodoList: "TodoList",
+  WeatherDetail: "WeatherDetail",
+  TaskSchedule: "TaskSchedule",
+ 
 
 
-const routes: RouteRecordRaw[] = [
+}
+
+//const type RouteName = (type of RouteName)[keyof typeof RouteName];
+
+export const getRoutes =() => {
+  const routes : Array<RouteRecordRow> =[
+
+    {
+      path: '/',
+      name: RouteName.AppTop,
+      component: AppTop,
+      meta: { 
+        //なんでerror出ないのかわからない↓
+        layout: 'layoutTop'
+        /* layoutOption: {
+          fullHeight: true;
+          noheader: true;
+        },
+        //next: RouteName.AppTop,
+        //resetStoreBeforeEnter: 'store',
+
+      },
+    },
+    {
+      path: '/member/memberList',
+      name: RouteName.MemberList,
+      component: MemberList,
+    },
+    {
+      path: '/member/memberDetail',
+      name: RouteName.MemberDetail,
+      component: MemberDetail,
+    },
+    {
+      path: '/HomeView',
+      name: RouteName.HomeView,
+      component: HomeView,
+    },
+    {
+      path: '/WeatherDisplay/WeatherDetail',
+      name: 'WeatherDetail',
+      component: RouteName.WeatherDetail,
+    },
+    {
+      path: '/TodoList',
+      name: RouteName.TodoList,
+      component: TodoList,
+    },
+    {
+      path: 'HomeView/TaskCalendar',
+      name: RouteName.TaskSchedule,
+      component: TaskSchedule,
+    },
+  ];
+  
+   const router = createRouter({
+    history: createWebHistory('/'),
+    routes,
+  });
+      
+};  */
+
+
+ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'AppTop',
@@ -21,7 +101,7 @@ const routes: RouteRecordRaw[] = [
     name: 'AppTop',
     ] */
   },
-   {
+  {
     path: '/member/memberList',
     name: 'MemberList',
     component: () => import('../views/member/MemberList.vue'),
@@ -42,7 +122,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../components/WeatherDisplay/WeatherDetail.vue'),
   },
   {
-    path: '/TodoList/TodoList',
+    path: '/TodoList',
     name: 'ToDo',
     component: () => import('../components/TodoList/TodoList.vue'),
   },
@@ -56,7 +136,7 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory('/'),
   routes,
-});
+}); 
 export default router;
 
 //ルーティング登録方法
