@@ -2,6 +2,7 @@
 import { onMounted, ref, watch } from 'vue';
 import { useTodoDataStore } from '../../stores';
 import { addTodoItem, getTodoItemList, removeTodoItem } from '../../modules/db';
+import { getTodoItemCreatedDate } from '../../modules';
 
 const taskInput = ref('');
 const todoDataStore = useTodoDataStore();
@@ -36,7 +37,7 @@ const handleAddTodoItem = async () => {
     id: new Date().getTime().toString(),
     todoText: taskInput.value,
     isDone: false,
-    createdAt: new Date(),
+    createdAt: getTodoItemCreatedDate(),
   };
   const prevData = await getTodoItemList();
   const newData = [...prevData, data];

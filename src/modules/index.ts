@@ -7,6 +7,7 @@ import { useWeatherDataStore } from '../stores';
 
 import { WEATHER } from '../consts';
 import { WEATHER_EN } from '../types';
+import { format } from '@formkit/tempo';
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -14,7 +15,8 @@ const apiUrl = import.meta.env.VITE_API_URL;
 export const getWeatherData = async () => {
   const weatherDataStore = useWeatherDataStore();
 
-  const url = apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
+  const url =
+    apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
 
   // fetch を使って天気情報を取得する
   const response = await fetch(url);
@@ -50,6 +52,11 @@ export function getTodayDate(): string {
   const dateString = `${month}月${day}日(${weekDayName})`; // テンプレート文字列を使って日付を作成
   return dateString;
 }
+
+export const getTodoItemCreatedDate = () => {
+  const date = new Date();
+  return format(date, { date: 'long', time: 'short' }, 'ja');
+};
 
 export const getCheerUpMessage = () => {
   const newDate = new Date();
