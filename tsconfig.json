@@ -19,7 +19,16 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+<<<<<<< HEAD
     "noFallthroughCasesInSwitch": true
+=======
+    "noFallthroughCasesInSwitch": true,
+    // aliasを使うために追加
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+>>>>>>> ea4bf7e982fb662775d8789ee0bdb29a6a4c572d
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

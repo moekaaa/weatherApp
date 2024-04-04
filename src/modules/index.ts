@@ -7,6 +7,10 @@ import { useWeatherDataStore } from '../stores';
 
 import { WEATHER } from '../consts';
 import { WEATHER_EN } from '../types';
+<<<<<<< HEAD
+=======
+import { format } from '@formkit/tempo';
+>>>>>>> ea4bf7e982fb662775d8789ee0bdb29a6a4c572d
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -14,7 +18,12 @@ const apiUrl = import.meta.env.VITE_API_URL;
 export const getWeatherData = async () => {
   const weatherDataStore = useWeatherDataStore();
 
+<<<<<<< HEAD
   const url = apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
+=======
+  const url =
+    apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
+>>>>>>> ea4bf7e982fb662775d8789ee0bdb29a6a4c572d
 
   // fetch を使って天気情報を取得する
   const response = await fetch(url);
@@ -51,6 +60,17 @@ export function getTodayDate(): string {
   return dateString;
 }
 
+<<<<<<< HEAD
+=======
+export const getTodoItemCreatedDate = () => {
+  const date = new Date();
+  // Tempoっていう最近リリースされたライブラリ
+  // 日付をいい感じにフォーマットしてくれる
+  // https://synamon.hatenablog.com/entry/2024/03/06/090000
+  return format(date, { date: 'long', time: 'short' }, 'ja');
+};
+
+>>>>>>> ea4bf7e982fb662775d8789ee0bdb29a6a4c572d
 export const getCheerUpMessage = () => {
   const newDate = new Date();
   const month = newDate.getMonth() + 1;
