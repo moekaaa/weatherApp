@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
-import { useTodoDataStore } from '../../stores';
-import { addTodoItem, getTodoItemList, removeTodoItem } from '../../modules/db';
-import { getTodoItemCreatedDate } from '../../modules';
+import { useTodoDataStore } from '@/stores';
+import { addTodoItem, getTodoItemList, removeTodoItem } from '@/modules/db';
+import { getTodoItemCreatedDate } from '@/modules';
 
 const taskInput = ref('');
 const todoDataStore = useTodoDataStore();
