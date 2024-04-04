@@ -17,7 +17,7 @@ onMounted(async () => {
 });
 //inputの文字数制限
 const limitTextLength = () => {
-  let maxLength = 10; // 文字数の上限
+  let maxLength = 20; // 文字数の上限
   //変数名わかりにくいから考え直す
   let rmnngChrctrs = document.getElementById('rmnngChrctrs');
 
@@ -75,7 +75,7 @@ const handleRemoveTodoItem = async (id: string) => {
         v-model="taskInput"
         @input="limitTextLength()"
         placeholder="タスクを追加してください" />
-      <div>残りの文字数：<span id="rmnngChrctrs">10</span></div>
+      <div>残りの文字数：<span id="rmnngChrctrs">20</span></div>
       <button class="todo-search-button" @click="handleAddTodoItem">
         追加
       </button>
