@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { useTodoDataStore } from '../../stores';
-import { addTodoItem, getTodoItem } from '../../modules/db';
+import { addTodoItem, getTodoItemList, removeTodoItem } from '../../modules/db';
 
 const taskInput = ref('');
 const todoDataStore = useTodoDataStore();
 
 onMounted(async () => {
-  todoDataStore.todoList = await getTodoItem();
+  todoDataStore.todoList = await getTodoItemList();
 
   /*   //リストの絞り込み
   computed: {
@@ -19,7 +19,7 @@ const limitTextLength = () => {
   let maxLength = 10; // 文字数の上限
   //変数名わかりにくいから考え直す
   let rmnngChrctrs = document.getElementById('rmnngChrctrs');
-  
+
   if (taskInput.value.length > maxLength) {
     console.log(taskInput.value);
     taskInput.value = taskInput.value.substr(0, maxLength);
@@ -31,27 +31,31 @@ const limitTextLength = () => {
   rmnngChrctrs.textContent = maxLength - taskInput.value.length;
 };
 
-const handleSubmit = async () => {
-  const newData = await addTodoItem(taskInput.value);
+const handleAddTodoItem = async () => {
+  const data = {
+    id: new Date().getTime().toString(),
+    todoText: taskInput.value,
+    isDone: false,
+    createdAt: new Date(),
+  };
+  const prevData = await getTodoItemList();
+  const newData = [...prevData, data];
+  todoDataStore.todoList = newData;
+  await addTodoItem(newData);
+};
+
+const doChangeState = async (task) => {};
+
+const handleRemoveTodoItem = async (id: string) => {
+  const newData = await removeTodoItem(id);
   todoDataStore.todoList = newData;
 };
-
-const doChangeState = async (task) => {
-
-};
-
-const doRemove = async (task) => {
-
-};
-
-
 
 /* watch: {
   //ウォッチャー使って値の変更を監視できるように実装する
   // オプションを使う場合はオブジェクト形式にする
  
 } */
-
 </script>
 
 <template>
@@ -61,56 +65,54 @@ const doRemove = async (task) => {
     <RouterLink v-bind:to="{ name: 'HomeView' }"> HomeView</RouterLink>
   </div>
 
-    <div class="container">
-      <h1>タスクの追加</h1>
-      <form class="todo-add-form">
-        <input
-          class="todo-search-input"
-          type="text"
-          v-model="taskInput"
-          @input="limitTextLength();"
-          placeholder="タスクを追加してください" />
-          <div>残りの文字数：<span 
-            id="rmnngChrctrs"
-            >10</span></div>
-        <button class="todo-search-button" @click="handleSubmit">追加</button>
-      </form>
-  
+  <div class="container">
+    <h1>タスクの追加</h1>
+    <form class="todo-add-form">
+      <input
+        class="todo-search-input"
+        type="text"
+        v-model="taskInput"
+        @input="limitTextLength()"
+        placeholder="タスクを追加してください" />
+      <div>残りの文字数：<span id="rmnngChrctrs">10</span></div>
+      <button class="todo-search-button" @click="handleAddTodoItem">
+        追加
+      </button>
+    </form>
 
-      <table  class="todo-list-group">
-        <thead>
-          <tr>
-            <th class="comment">タスク</th>
-            <th class="state">状態</th>
-            <th class="date">追加日</th>
-            <th class="button">-</th>
-          </tr>
-        </thead>
+    <table class="todo-list-group">
+      <thead>
+        <tr>
+          <th class="comment">タスク</th>
+          <th class="state">状態</th>
+          <th class="date">追加日</th>
+          <th class="button">-</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr v-for="task in todoDataStore.todoList" v-bind:key="task.id">
-            <td>{{ task.todoText }}</td>
-            <td class="button">
+      <tbody>
+        <tr v-for="task in todoDataStore.todoList" v-bind:key="task.id">
+          <td>{{ task.todoText }}</td>
+          <td class="button">
             <button @click="doChangeState(task)">{{ task.isDone }}</button>
-            </td>
-            <td>{{  task.createdAt }}</td>
-            <td><button @click.ctrl="doRemove(task)">
-              削除
-            </button></td>
-            
-          </tr>
-        </tbody>
-      </table>
+          </td>
+          <td>{{ task.createdAt }}</td>
+          <td>
+            <button @click.ctrl="handleRemoveTodoItem(task.id)">削除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <style>
-.container{
+.container {
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  min-width :100px;
+  min-width: 100px;
   row-gap: 1.5em;
 }
 .todo-add-form {
@@ -156,11 +158,11 @@ thead th {
 }
 th,
 th {
-
   padding: 0 8px;
   line-height: 40px;
 }
-thead th.id, th.date{
+thead th.id,
+th.date {
   width: 50px;
 }
 thead th.state {
@@ -172,7 +174,8 @@ thead th.comment {
 thead th.button {
   width: 60px;
 }
-tbody td.button, tbody td.state {
+tbody td.button,
+tbody td.state {
   text-align: center;
 }
 tbody tr td,
