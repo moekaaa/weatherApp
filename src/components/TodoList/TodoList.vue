@@ -17,9 +17,9 @@ onMounted(async () => {
 });
 //inputの文字数制限
 const limitTextLength = () => {
-  let maxLength = 20; // 文字数の上限
+  const maxLength = 20; // 文字数の上限
   //変数名わかりにくいから考え直す
-  let rmnngChrctrs = document.getElementById('rmnngChrctrs');
+  const rmnngChrctrs = document.getElementById('rmnngChrctrs');
 
   if (taskInput.value.length > maxLength) {
     console.log(taskInput.value);
