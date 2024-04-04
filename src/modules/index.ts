@@ -55,6 +55,9 @@ export function getTodayDate(): string {
 
 export const getTodoItemCreatedDate = () => {
   const date = new Date();
+  // Tempoっていう最近リリースされたライブラリ
+  // 日付をいい感じにフォーマットしてくれる
+  // https://synamon.hatenablog.com/entry/2024/03/06/090000
   return format(date, { date: 'long', time: 'short' }, 'ja');
 };
 
