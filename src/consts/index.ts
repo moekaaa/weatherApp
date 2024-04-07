@@ -1,5 +1,6 @@
 import { WEATHER_TYPE, WEEK_DAY_TYPE } from "../types";
 import { TIPS_FOR_TODAY } from "../types";
+import { TODO_TITLE } from "../types";
 
 export const WEEK_DAY: Record<number, WEEK_DAY_TYPE> = {
   0: "日",
@@ -18,6 +19,12 @@ export const WEATHER: WEATHER_TYPE = {
   Mist: "霧雨",
   Snowy: "雪",
   undefined: "不明",
+};
+
+ export const TODO: TODO_TITLE = {
+  task: "タスク",
+  status: "状態",
+  date: "日付",
 };
 
 export const CHEERUP_FOR_ODD_NUMBER_MONTH : TIPS_FOR_TODAY = {
