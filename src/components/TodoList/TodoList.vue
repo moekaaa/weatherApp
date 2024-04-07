@@ -72,7 +72,7 @@ const handleRemoveTodoItem = async (id: string) => {
 
   <div class="container">
     <h1>タスクの追加</h1>
-    <form class="todo-add-form">
+    <div class="todo-add-form">
       <input
         class="todo-search-input"
         type="text"
@@ -83,7 +83,7 @@ const handleRemoveTodoItem = async (id: string) => {
       <button class="todo-search-button" @click="handleAddTodoItem">
         追加
       </button>
-    </form>
+    </div>
 
     <table class="todo-list-group">
       <thead>
@@ -102,7 +102,7 @@ const handleRemoveTodoItem = async (id: string) => {
             <button @click="doChangeState(task)">{{ task.isDone }}</button>
           </td>
           <td>{{ task.createdAt }}</td>
-          <td>
+          <td class="button">
             <button @click.ctrl="handleRemoveTodoItem(task.id)">削除</button>
           </td>
         </tr>
