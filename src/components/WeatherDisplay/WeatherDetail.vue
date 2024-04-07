@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onBeforeMount, onMounted } from 'vue';
 import { useWeatherDataStore } from '../../stores';
 import { getTodayDate, getWeatherData } from '../../modules';
+import { isWhiteSpaceLike } from 'typescript';
 
 const weatherDataStore = useWeatherDataStore();
 
@@ -10,7 +11,6 @@ const weatherDataStore = useWeatherDataStore();
 const cityInput = ref('');
 
 const submitCity = async (e: Event) => {
-  console.log(cityInput.value);
   e.preventDefault();
   const todayDate = getTodayDate();
   weatherDataStore.todayDate = todayDate;
@@ -21,15 +21,38 @@ const submitCity = async (e: Event) => {
   weatherDataStore.isDataFetched = true;
 };
 
-// const weather = ref('');
+const weather = ref('');
+const weatherIcon = ref('');
 
-// const weatherDetail = () => {
-//   weather.value = weatherDataStore.weatherDetail.weather;
-// };
+//v-bind使えばいいんだよね？
+const weatherDetail = () => {
+ weather.value = weatherDataStore.weatherDetail.weather;
+ console.log(weather.value)
+ weather.value = '晴れ';
+ if(weather.value === '晴れ'){
+  weatherIcon.value == 'fa-solid fa-sun';
+ }else if(weather.value === '曇り'){
+  weatherIcon.value == 'fa-solid fa-cloud-sun';
+ }else if(weather.value === '雨'){
+  weatherIcon.value == 'fa-solid fa-cloud-rain';
+ }else if(weather.value === '霧雨'){
+  weatherIcon.value == 'fa-solid fa-droplet';
+ }else if(weather.value === '雪'){
+  weatherIcon.value == 'fa-solid fa-snowman';
+ }else{
+  weatherIcon.value == 'fa-solid fa-circle-question';
+ }
 
-// onMounted(() => {
-//   weatherDetail();
-// });
+};
+
+ onMounted(() => {
+   weatherDetail();
+ });
+
+onBeforeMount(() => {
+  //storeの変数を消す
+  //weatherDetail();
+ });
 </script>
 
 <template>
@@ -56,6 +79,7 @@ const submitCity = async (e: Event) => {
     <div v-if="weatherDataStore.isDataFetched" class="weatherDetail">
       <p class="today">今日の日付: {{ weatherDataStore.todayDate }}</p>
       <!-- TODO: 天気によってアイコンを表示 -->
+      <v-icon color="black" icon='fa:fas' + weatherIcon.value ></v-icon>
       <!-- const weather = weatherDetail()とかで呼び出せるのでは？ :)-->
       <p class="weather">{{ weatherDataStore.weatherDetail.weather }}</p>
       <div class="temp">
