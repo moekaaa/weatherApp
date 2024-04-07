@@ -8,7 +8,7 @@ import TodoList from '../components/TodoList/TodoList.vue';
 import TaskSchedule from '../components/calendar/TaskSchedule.vue';
 import WeatherDetail from '../components/WeatherDisplay/WeatherDetail.vue';
 
-/*  //security向上の為に、getRoutesして画面遷移を切り分けます
+/*   //security向上の為に、getRoutesして画面遷移を切り分けます
 export const RouteName = {
   AppTop: "AppTop",
   HomeView: "HomeView",
@@ -17,9 +17,6 @@ export const RouteName = {
   TodoList: "TodoList",
   WeatherDetail: "WeatherDetail",
   TaskSchedule: "TaskSchedule",
- 
-
-
 }
 
 //const type RouteName = (type of RouteName)[keyof typeof RouteName];
@@ -31,10 +28,10 @@ export const getRoutes =() => {
       path: '/',
       name: RouteName.AppTop,
       component: AppTop,
-      meta: { 
+      /* meta: { 
         //なんでerror出ないのかわからない↓
         layout: 'layoutTop'
-        /* layoutOption: {
+         layoutOption: {
           fullHeight: true;
           noheader: true;
         },
@@ -74,32 +71,26 @@ export const getRoutes =() => {
       component: TaskSchedule,
     },
   ];
+
+  return routes;      
+};  
+
+export const getRouteByName = (name: RouteName) => {
+  return getRoutes().find((route) => route.name === name);
   
-   const router = createRouter({
-    history: createWebHistory('/'),
-    routes,
-  });
-      
-};  */
+};
+
+export const getRouteByPath = (path: Stromg) => {
+  return getRoutes().find((route) => route.path === path);
+} */
 
 
- const routes: RouteRecordRaw[] = [
+  const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'AppTop',
     component: AppTop,
-    /* children: [
-      {
-        path: '/member/memberList',
-        name: 'MemberDetail',
-        component: () => import('../views/member/MemberList.vue'),
-        meta: { 
-          layout: 'layoutTop'
-        
-        }
-      }
-    name: 'AppTop',
-    ] */
+   
   },
   {
     path: '/member/memberList',

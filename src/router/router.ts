@@ -4,9 +4,12 @@ import AppTop from '../views/AppTop.vue';
 import getRoutes from './router';
 
 
-const getRoutes = getRoutes();
+
+declare module "vue-router" {
+    const getRoutes = getRoutes();
 
 const router = createRouter({
     history: createWebHistory('/'),
     routes,
-  }); */
+  });
+} */
