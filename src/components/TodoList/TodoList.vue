@@ -3,7 +3,7 @@ import { onMounted, ref, watch } from 'vue';
 import { useTodoDataStore } from '@/stores';
 import { addTodoItem, getTodoItemList, removeTodoItem } from '@/modules/db';
 import { getTodoItemCreatedDate } from '@/modules';
-import { TODO } from '@/consts'
+import { TODO } from '@/consts';
 
 const taskInput = ref('');
 const todoDataStore = useTodoDataStore();
@@ -29,7 +29,7 @@ const limitTextLength = () => {
   } else {
     rmnngChrctrs?.classList.remove('max');
   }
-  rmnngChrctrs!.textContent = (String)(maxLength - taskInput.value.length);
+  rmnngChrctrs!.textContent = String(maxLength - taskInput.value.length);
 };
 
 const handleAddTodoItem = async () => {
@@ -45,11 +45,7 @@ const handleAddTodoItem = async () => {
   await addTodoItem(newData);
 };
 
-const doChangeState = async () => {
-
-
-
-};
+const doChangeState = async () => {};
 
 const handleRemoveTodoItem = async (id: string) => {
   const newData = await removeTodoItem(id);
@@ -90,7 +86,7 @@ const handleRemoveTodoItem = async (id: string) => {
         <tr>
           <th class="task">{{ TODO.task }}</th>
           <th class="status">{{ TODO.status }}</th>
-          <th class="date">{{ TODO.date }} </th>
+          <th class="date">{{ TODO.date }}</th>
           <th class="button">-</th>
         </tr>
       </thead>
@@ -99,11 +95,11 @@ const handleRemoveTodoItem = async (id: string) => {
         <tr v-for="task in todoDataStore.todoList" v-bind:key="task.id">
           <td>{{ task.todoText }}</td>
           <td class="button">
-            <button @click="doChangeState(task)">{{ task.isDone }}</button>
+            <button @click="doChangeState">{{ task.isDone }}</button>
           </td>
           <td>{{ task.createdAt }}</td>
           <td class="button">
-            <button @click.ctrl="handleRemoveTodoItem(task.id)">削除</button>
+            <button @click="handleRemoveTodoItem(task.id)">削除</button>
           </td>
         </tr>
       </tbody>

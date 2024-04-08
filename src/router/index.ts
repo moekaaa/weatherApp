@@ -84,13 +84,11 @@ export const getRouteByPath = (path: Stromg) => {
   return getRoutes().find((route) => route.path === path);
 } */
 
-
-  const routes: RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'AppTop',
     component: AppTop,
-   
   },
   {
     path: '/member/memberList',
@@ -120,14 +118,14 @@ export const getRouteByPath = (path: Stromg) => {
   {
     path: '/WeatherDisplay/WeatherDetail',
     name: 'Calendar',
-    component: () => import('../components/calendar/TaskSchedule.vue'),
+    component: () => import('../components/appCalendar/TaskSchedule.vue'),
   },
 ];
 
 const router = createRouter({
   history: createWebHistory('/'),
   routes,
-}); 
+});
 export default router;
 
 //ルーティング登録方法
