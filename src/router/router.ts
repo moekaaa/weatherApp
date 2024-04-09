@@ -11,17 +11,19 @@ const router = createRouter({
     routes: getRoutes(),
   });
 
-
-declare module "vue-router" {
-    const getRoutes = getRoutes();
-
-
-} 
-
-interface RouteMeta{
-  layout?
-  | layoutTop
-  layoutOption?{
+declare module "vue-router"{
+  interface RouteMeta{
+  layout?:
+  | "layoutTop"
+  layoutOption?:{
+    fullHeight?: boolean;
+    noHeader?: boolean;
     
   }
-}*/
+  prev?:
+  next?:
+
+}
+
+}
+*/
