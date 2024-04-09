@@ -12,9 +12,9 @@ import { format } from '@formkit/tempo';
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
 
-export const getWeatherData = async () => {
-  const weatherDataStore = useWeatherDataStore();
+const weatherDataStore = useWeatherDataStore();
 
+export const getWeatherData = async () => {
   const url =
     apiUrl + weatherDataStore.city + '&appid=' + apiKey + '&units=metric';
 
@@ -41,6 +41,30 @@ export const getWeatherData = async () => {
     // if(something instanceof type)という書き方は、タイプガードと言って、errorはError型の時のみ実行する
     if (error instanceof Error) throw new Error('Error: ' + error.message);
   }
+};
+
+//moduleに移動する
+//曇りしか表示されなくなった、、、
+
+export const showWeatherIcon = () => {
+  const weather = weatherDataStore.weatherDetail.weather;
+
+ console.log('showWeatherIcon: ', weather)
+  if(weather == '天気: 晴れ'){
+    weatherDataStore.weatherIcon = 'fa-solid fa-sun';
+  }else if(weather == '天気: 曇り'){
+    weatherDataStore.weatherIcon = 'fa-solid fa-cloud-sun';
+  }else if(weather == '天気: 雨'){
+    weatherDataStore.weatherIcon = 'fa-solid fa-cloud-rain';
+  }else if(weather == '天気: 霧雨'){
+    weatherDataStore.weatherIcon = 'fa-solid fa-droplet';
+  }else if(weather == '天気: 雪'){
+    weatherDataStore.weatherIcon = 'fa-solid fa-snowman';
+  }else{
+    weatherDataStore.weatherIcon = 'fa-solid fa-circle-question';
+  }
+  return weatherDataStore.weatherIcon;
+
 };
 
 export function getTodayDate(): string {

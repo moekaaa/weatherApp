@@ -5,7 +5,7 @@ import { TODO, MEMBER } from '../types';
 export const useTodoDataStore = defineStore('todo', () => {
   const todoList = ref<TODO[]>([
     {
-      id: 1,
+      id: '',
       todoText: 'Todo1',
       isDone: false,
       createdAt: new Date(),
@@ -42,12 +42,13 @@ export const useWeatherDataStore = defineStore('weather', () => {
   });
   const city = ref('');
   const isDataFetched = ref(false);
-
+  const weatherIcon = ref('');
   return {
     todayDate,
     weatherDetail,
     city,
     isDataFetched,
+    weatherIcon,
   };
 });
 

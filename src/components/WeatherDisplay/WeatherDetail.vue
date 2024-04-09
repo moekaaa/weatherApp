@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, onMounted } from 'vue';
 import { useWeatherDataStore } from '../../stores';
-import { getTodayDate, getWeatherData } from '../../modules';
+import { getTodayDate, getWeatherData, showWeatherIcon } from '../../modules';
 //import { isWhiteSpaceLike } from 'typescript';
 
 const weatherDataStore = useWeatherDataStore();
@@ -9,6 +9,7 @@ const weatherDataStore = useWeatherDataStore();
 //ToDo_Moeka: DBとつないでcreate table/ insert dataする
 
 const cityInput = ref('');
+const weatherIcon = showWeatherIcon();
 
 const submitCity = async (e: Event) => {
   console.log(cityInput.value);
@@ -21,9 +22,11 @@ const submitCity = async (e: Event) => {
   await getWeatherData();
   weatherDataStore.isDataFetched = true;
   showWeatherIcon();
+  
 };
 
-//moduleに移動する
+
+/* //moduleに移動する
 const weather = ref('');
 const weatherIcon = ref('');
 
@@ -44,16 +47,16 @@ const showWeatherIcon = () => {
     weatherIcon.value = 'fa-solid fa-circle-question';
   }
 
-}; 
+};  */
 
-/*  onMounted(() => {
-   weatherDetail();
- }); */
+  onMounted(() => {
+   //weatherDetail();
+ }); 
 
-/* onBeforeMount(() => {
+ onBeforeMount(() => {
   //storeの変数を消す
   //weatherDetail();
- }); */
+ }); 
 </script>
 
 <template>
