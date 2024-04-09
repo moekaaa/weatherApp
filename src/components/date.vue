@@ -3,7 +3,7 @@ import { onUnmounted, ref } from 'vue';
 import { getTodayDate } from '../modules';
 
 const TodayDate = getTodayDate();
-const name = ref('moeka');
+const name = ref('');
 //ref, setInterval, functionの使い方理解
 
 const now = new Date();
